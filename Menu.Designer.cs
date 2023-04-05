@@ -5,9 +5,6 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
-using Emgu.CV;
-using Emgu.CV.CvEnum;
-using Emgu.CV.Structure;
 
 namespace Autolocker
 {
@@ -46,6 +43,7 @@ namespace Autolocker
         {
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -65,13 +63,25 @@ namespace Autolocker
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(168, 87);
+            this.checkBox1.Location = new System.Drawing.Point(168, 120);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(55, 17);
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "active";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            //
+            // checkBox2
+            //
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(168, 87);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(55, 17);
+            this.checkBox2.TabIndex = 1;
+            this.checkBox2.Text = "random agent";
+            this.checkBox2.UseVisualStyleBackColor = true;
+
+
             // 
             // Menu
             // 
@@ -80,6 +90,7 @@ namespace Autolocker
             this.ClientSize = new System.Drawing.Size(400, 200);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.checkBox2);
             this.Name = "Menu";
             this.Text = "Autolocker";
             this.ResumeLayout(false);
@@ -88,9 +99,9 @@ namespace Autolocker
         }
 
         #endregion
-
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
 
         // Define a variable to store the selected item
         string agentName;
@@ -108,7 +119,18 @@ namespace Autolocker
         {
             while (checkBox1.Checked)
             {
-                this.comboBox1.Invoke(new GetSelectedItemDelegate(GetSelectedItem));
+
+                if (this.checkBox2.Checked)
+                {
+                    Random rand = new Random();
+                    int randomNumber = rand.Next(0, 20);
+
+                    agentName = this.comboBox1.Items[randomNumber].ToString().ToLower();
+                } else
+                {
+                    this.comboBox1.Invoke(new GetSelectedItemDelegate(GetSelectedItem));
+                }
+
                 Image a = Properties.Resources.ResourceManager.GetObject(agentName) as Image;
                 Bitmap agent = new Bitmap(a);
 
