@@ -53,31 +53,14 @@ namespace Autolocker
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Astra",
-            "Breach",
-            "Brimstone",
-            "Chamber",
-            "Cypher",
-            "Fade",
-            "Gekko",
-            "Harbor",
-            "Jett",
-            "KAYO",
-            "Killjoy",
-            "Neon",
-            "Omen",
-            "Phoenix",
-            "Raze",
-            "Reyna",
-            "Sage",
-            "Skye",
-            "Sova",
-            "Viper",
-            "Yoru"});
+                "Astra","Breach","Brimstone","Chamber","Cypher","Fade","Gekko","Harbor","Jett","KAYO","Killjoy","Neon","Omen","Phoenix","Raze","Reyna","Sage","Skye","Sova","Viper","Yoru"
+            });
             this.comboBox1.Location = new System.Drawing.Point(138, 45);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndex = 0;
+            this.comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             // 
             // checkBox1
             // 
@@ -88,6 +71,7 @@ namespace Autolocker
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "active";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // Menu
             // 
@@ -117,14 +101,14 @@ namespace Autolocker
         // Method to get the selected item on the UI thread
         private void GetSelectedItem()
         {
-            agentName = comboBox1.SelectedItem.ToString().ToLower();
+            agentName = this.comboBox1.SelectedItem.ToString().ToLower();
         }
 
         public void searchAgent()
         {
             while (checkBox1.Checked)
             {
-                comboBox1.Invoke(new GetSelectedItemDelegate(GetSelectedItem));
+                this.comboBox1.Invoke(new GetSelectedItemDelegate(GetSelectedItem));
                 Image a = Properties.Resources.ResourceManager.GetObject(agentName) as Image;
                 Bitmap agent = new Bitmap(a);
 
@@ -152,7 +136,7 @@ namespace Autolocker
                 int fullY = 0;
                 for (int i = 0; i < 21; i++)
                 {
-                    int error = 0;
+                    int matched = 0;
                     for (int x = 0; x < 80; x++)
                     {
                         for (int y = 0; y < 80; y++)
@@ -163,14 +147,16 @@ namespace Autolocker
                             Color fullscreenPixel = fullscreen.GetPixel(fullX, fullY);
                             Color agentPixel = agent.GetPixel(x, y);
 
-                            if (fullscreenPixel != agentPixel)
+                            if (fullscreenPixel == agentPixel)
                             {
-                                error++;
+                                matched++;
                             }
                         }
                     }
 
-                    if (error < 100)
+
+
+                    if (matched >= 4000)
                     {
                         for (int j = 0; j < 3; j++)
                         {
@@ -196,16 +182,19 @@ namespace Autolocker
                     }
                 }
 
-
+                agent.Dispose();
                 fullscreen.Dispose();
             }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            Thread searchThread = new Thread(new ThreadStart(searchAgent));
-            searchThread.IsBackground = true;
-            searchThread.Start();
+            if (checkBox1.Checked)
+            {
+                Thread searchThread = new Thread(new ThreadStart(searchAgent));
+                searchThread.IsBackground = true;
+                searchThread.Start();
+            }
         }
     }
 }
