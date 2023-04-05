@@ -126,16 +126,14 @@ namespace Autolocker
                     int randomNumber = rand.Next(0, 20);
 
                     agentName = this.comboBox1.Items[randomNumber].ToString().ToLower();
-                } else
+                }
+                else
                 {
                     this.comboBox1.Invoke(new GetSelectedItemDelegate(GetSelectedItem));
                 }
 
                 Image a = Properties.Resources.ResourceManager.GetObject(agentName) as Image;
                 Bitmap agent = new Bitmap(a);
-
-                // Image full = Properties.Resources.fullscreen;
-                // Bitmap fullscreen = new Bitmap(full);
 
                 // Get the bounds of the primary screen
                 Rectangle bounds = Screen.PrimaryScreen.Bounds;
@@ -149,7 +147,6 @@ namespace Autolocker
                     // Copy the screen to the bitmap
                     graphics.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
                 }
-
 
                 int XOffset = 500;
                 int YOffset = 885;
@@ -176,9 +173,9 @@ namespace Autolocker
                         }
                     }
 
+                    Console.WriteLine(matched);
 
-
-                    if (matched >= 4000)
+                    if (matched >= 500)
                     {
                         for (int j = 0; j < 3; j++)
                         {
