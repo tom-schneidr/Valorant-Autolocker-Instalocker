@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace Autolocker
 {
@@ -15,9 +13,7 @@ namespace Autolocker
 
         private const int MOUSEEVENTF_LEFTDOWN = 0x02;
         private const int MOUSEEVENTF_LEFTUP = 0x04;
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
+
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
@@ -103,13 +99,11 @@ namespace Autolocker
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
 
-        // Define a variable to store the selected item
+        // Variable stores currently selected agent
         string agentName;
 
-        // Define a delegate to get the selected item on the UI thread
         delegate void GetSelectedItemDelegate();
 
-        // Method to get the selected item on the UI thread
         private void GetSelectedItem()
         {
             agentName = this.comboBox1.SelectedItem.ToString().ToLower();
@@ -117,9 +111,10 @@ namespace Autolocker
 
         public void searchAgent()
         {
+            // Keeps searching until the program is turned off (active checkmark removed)
             while (checkBox1.Checked)
             {
-
+                // Randomly selects an agent if random option is active
                 if (this.checkBox2.Checked)
                 {
                     Random rand = new Random();
@@ -132,22 +127,20 @@ namespace Autolocker
                     this.comboBox1.Invoke(new GetSelectedItemDelegate(GetSelectedItem));
                 }
 
+                // Loads currently selected agent icon into bitmap
                 Image a = Properties.Resources.ResourceManager.GetObject(agentName) as Image;
                 Bitmap agent = new Bitmap(a);
 
-                // Get the bounds of the primary screen
+                // Loads current screen into bitmap
                 Rectangle bounds = Screen.PrimaryScreen.Bounds;
-
-                // Create a Bitmap object to hold the screenshot
                 Bitmap fullscreen = new Bitmap(bounds.Width, bounds.Height);
 
-                // Create a Graphics object from the bitmap
                 using (Graphics graphics = Graphics.FromImage(fullscreen))
                 {
-                    // Copy the screen to the bitmap
                     graphics.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
                 }
 
+                // Starting coordinates, dependant on resolution (Resolution: 1920x1080) - Other resolutions arent supported
                 int XOffset = 500;
                 int YOffset = 885;
 
@@ -173,13 +166,12 @@ namespace Autolocker
                         }
                     }
 
-                    Console.WriteLine(matched);
-
+                    // Checked location matches agent icon (only about 10% match required)
                     if (matched >= 500)
                     {
+                        // Selection repeated 3 times to make sure it works properly
                         for (int j = 0; j < 3; j++)
                         {
-                            // Click the position
                             Cursor.Position = new Point(fullX - 40, fullY - 40);
                             Thread.Sleep(100);
                             mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
@@ -193,6 +185,7 @@ namespace Autolocker
                         break;
                     }
 
+                    // Offset change, dependant on resolution (Resolution: 1920x1080) - Other resolutions arent supported
                     if (i != 10) XOffset += 84;
                     else if (i == 10)
                     {
