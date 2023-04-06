@@ -37,6 +37,8 @@ namespace Autolocker
         /// </summary>
         private void InitializeComponent()
         {
+            this.Icon = Properties.Resources.autolocker_valorant_64;
+
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
