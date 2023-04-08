@@ -25,49 +25,63 @@ namespace Autolocker
         /// </summary>
         private void InitializeComponent()
         {
-            this.Icon = Properties.Resources.autolocker_valorant_64;
-
             this.comboBoxAgents = new System.Windows.Forms.ComboBox();
             this.checkBoxActive = new System.Windows.Forms.CheckBox();
             this.checkBoxRandomAgent = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // Select agent dropdown menu
+            // comboBoxAgents
             // 
             this.comboBoxAgents.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAgents.FormattingEnabled = true;
             this.comboBoxAgents.Items.AddRange(new object[] {
-                "Astra","Breach","Brimstone","Chamber","Cypher","Fade","Gekko","Harbor","Jett","KAYO","Killjoy","Neon","Omen","Phoenix","Raze","Reyna","Sage","Skye","Sova","Viper","Yoru"
-            });
+            "Astra",
+            "Breach",
+            "Brimstone",
+            "Chamber",
+            "Cypher",
+            "Fade",
+            "Gekko",
+            "Harbor",
+            "Jett",
+            "KAYO",
+            "Killjoy",
+            "Neon",
+            "Omen",
+            "Phoenix",
+            "Raze",
+            "Reyna",
+            "Sage",
+            "Skye",
+            "Sova",
+            "Viper",
+            "Yoru"});
             this.comboBoxAgents.Location = new System.Drawing.Point(138, 45);
-            this.comboBoxAgents.Name = "comboBox1";
+            this.comboBoxAgents.Name = "comboBoxAgents";
             this.comboBoxAgents.Size = new System.Drawing.Size(121, 21);
             this.comboBoxAgents.TabIndex = 0;
-            this.comboBoxAgents.SelectedIndex = 0;
-            this.comboBoxAgents.DropDownStyle = ComboBoxStyle.DropDownList;
             // 
-            // Active checkbox
+            // checkBoxActive
             // 
             this.checkBoxActive.AutoSize = true;
             this.checkBoxActive.Location = new System.Drawing.Point(168, 120);
-            this.checkBoxActive.Name = "checkBox1";
+            this.checkBoxActive.Name = "checkBoxActive";
             this.checkBoxActive.Size = new System.Drawing.Size(55, 17);
             this.checkBoxActive.TabIndex = 1;
             this.checkBoxActive.Text = "active";
             this.checkBoxActive.UseVisualStyleBackColor = true;
-            this.checkBoxActive.CheckedChanged += ActiveCheckBoxChanged;
-            //
-            // Randompick checkbox
-            //
+            this.checkBoxActive.CheckedChanged += new System.EventHandler(this.CheckBoxActive_CheckedChanged);
+            // 
+            // checkBoxRandomAgent
+            // 
             this.checkBoxRandomAgent.AutoSize = true;
             this.checkBoxRandomAgent.Location = new System.Drawing.Point(168, 87);
-            this.checkBoxRandomAgent.Name = "checkBox2";
-            this.checkBoxRandomAgent.Size = new System.Drawing.Size(55, 17);
+            this.checkBoxRandomAgent.Name = "checkBoxRandomAgent";
+            this.checkBoxRandomAgent.Size = new System.Drawing.Size(91, 17);
             this.checkBoxRandomAgent.TabIndex = 1;
             this.checkBoxRandomAgent.Text = "random agent";
             this.checkBoxRandomAgent.UseVisualStyleBackColor = true;
-
-
+            this.checkBoxRandomAgent.CheckedChanged += new System.EventHandler(this.CheckBoxRandomAgent_CheckedChanged);
             // 
             // Menu
             // 
@@ -77,6 +91,7 @@ namespace Autolocker
             this.Controls.Add(this.checkBoxActive);
             this.Controls.Add(this.comboBoxAgents);
             this.Controls.Add(this.checkBoxRandomAgent);
+            this.Icon = global::Autolocker.Properties.Resources.autolocker_valorant_64;
             this.Name = "Menu";
             this.Text = "Autolocker";
             this.ResumeLayout(false);

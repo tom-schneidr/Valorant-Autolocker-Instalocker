@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -17,6 +18,8 @@ namespace Autolocker
         public Menu()
         {
             InitializeComponent();
+            // Set Astra as the default value when opening the app
+            comboBoxAgents.SelectedItem = "Astra";
         }
 
         // Variable stores currently selected agent
@@ -42,16 +45,11 @@ namespace Autolocker
             // Keeps searching until the program is turned off (active checkmark removed)
             while (checkBoxActive.Checked && !found)
             {
-                // Randomly selects an agent if random option is active
-                if (this.checkBoxRandomAgent.Checked)
+                // Set the selected agent if random pick isnt activated
+                if (!this.checkBoxRandomAgent.Checked)
                 {
-                    Random rand = new Random();
-                    int randomNumber = rand.Next(0, 20);
-
-                    agentName = this.comboBoxAgents.Items[randomNumber].ToString().ToLower();
-                }
-                else
                     this.comboBoxAgents.Invoke(new GetSelectedItemDelegate(GetSelectedItem));
+                }
 
                 // Loads currently selected agent icon into bitmap
                 Image a = Properties.Resources.ResourceManager.GetObject(agentName) as Image;
@@ -97,8 +95,10 @@ namespace Autolocker
                     {
                         found = true;
                         this.checkBoxActive.Invoke(new UncheckActiveDelegate(UncheckActive));
-                        // Selection repeated 3 times to make sure it works properly
-                        for (int j = 0; j < 3; j++)
+
+                        // Selection repeated for 5 seconds to make sure an agent is selected
+                        TimeSpan endtime = DateTime.Now.AddSeconds(5).TimeOfDay;
+                        while (DateTime.Now.TimeOfDay <= endtime)
                         {
                             Cursor.Position = new Point(fullX - 40, fullY - 40);
                             Thread.Sleep(20);
@@ -125,16 +125,11 @@ namespace Autolocker
             // Keeps searching until the program is turned off (active checkmark removed)
             while (checkBoxActive.Checked && !found)
             {
-                // Randomly selects an agent if random option is active
-                if (this.checkBoxRandomAgent.Checked)
+                // Set the selected agent if random pick isnt activated
+                if (!this.checkBoxRandomAgent.Checked)
                 {
-                    Random rand = new Random();
-                    int randomNumber = rand.Next(0, 20);
-
-                    agentName = this.comboBoxAgents.Items[randomNumber].ToString().ToLower();
-                }
-                else
                     this.comboBoxAgents.Invoke(new GetSelectedItemDelegate(GetSelectedItem));
+                }
 
                 // Loads currently selected agent icon into bitmap
                 Image a = Properties.Resources.ResourceManager.GetObject(agentName) as Image;
@@ -180,8 +175,10 @@ namespace Autolocker
                     {
                         found = true;
                         this.checkBoxActive.Invoke(new UncheckActiveDelegate(UncheckActive));
-                        // Selection repeated 3 times to make sure it works properly
-                        for (int j = 0; j < 3; j++)
+
+                        // Selection repeated for 5 seconds to make sure an agent is selected
+                        TimeSpan endtime = DateTime.Now.AddSeconds(5).TimeOfDay;
+                        while (DateTime.Now.TimeOfDay <= endtime)
                         {
                             Cursor.Position = new Point(fullX - 40, fullY - 40);
                             Thread.Sleep(20);
@@ -203,10 +200,31 @@ namespace Autolocker
             }
         }
 
-        private void ActiveCheckBoxChanged(object sender, EventArgs e)
+        private void CheckBoxRandomAgent_CheckedChanged(object sender, EventArgs e)
+        {
+            // If random agent is activated, set random agent
+            if (checkBoxRandomAgent.Checked)
+            {
+                Random rand = new Random();
+                int randomNumber = rand.Next(0, 20);
+
+                agentName = this.comboBoxAgents.Items[randomNumber].ToString().ToLower();
+            }
+        }
+
+        private void CheckBoxActive_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxActive.Checked)
             {
+                // If random agent is activated, set random agent
+                if (checkBoxRandomAgent.Checked)
+                {
+                    Random rand = new Random();
+                    int randomNumber = rand.Next(0, 20);
+
+                    agentName = this.comboBoxAgents.Items[randomNumber].ToString().ToLower();
+                }
+
                 found = false;
                 Thread searchThreadTop = new Thread(new ThreadStart(SearchAgentTop))
                 {
