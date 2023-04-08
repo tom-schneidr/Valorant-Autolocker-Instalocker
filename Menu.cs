@@ -22,6 +22,8 @@ namespace Autolocker
         // Variable stores currently selected agent
         string agentName;
 
+        bool found = false;
+
         delegate void GetSelectedItemDelegate();
 
         private void GetSelectedItem()
@@ -29,10 +31,16 @@ namespace Autolocker
             agentName = this.comboBoxAgents.SelectedItem.ToString().ToLower();
         }
 
+        delegate void UncheckActiveDelegate();
+        private void UncheckActive()
+        {
+            checkBoxActive.Checked = false;
+        }
+
         public void SearchAgentTop()
         {
             // Keeps searching until the program is turned off (active checkmark removed)
-            while (checkBoxActive.Checked)
+            while (checkBoxActive.Checked && !found)
             {
                 // Randomly selects an agent if random option is active
                 if (this.checkBoxRandomAgent.Checked)
@@ -87,6 +95,8 @@ namespace Autolocker
                     // Checked location matches agent icon(only about 10 % match required)
                     if (matched >= 500)
                     {
+                        found = true;
+                        this.checkBoxActive.Invoke(new UncheckActiveDelegate(UncheckActive));
                         // Selection repeated 3 times to make sure it works properly
                         for (int j = 0; j < 3; j++)
                         {
@@ -113,7 +123,7 @@ namespace Autolocker
         public void SearchAgentBottom()
         {
             // Keeps searching until the program is turned off (active checkmark removed)
-            while (checkBoxActive.Checked)
+            while (checkBoxActive.Checked && !found)
             {
                 // Randomly selects an agent if random option is active
                 if (this.checkBoxRandomAgent.Checked)
@@ -168,6 +178,8 @@ namespace Autolocker
                     // Checked location matches agent icon(only about 10 % match required)
                     if (matched >= 500)
                     {
+                        found = true;
+                        this.checkBoxActive.Invoke(new UncheckActiveDelegate(UncheckActive));
                         // Selection repeated 3 times to make sure it works properly
                         for (int j = 0; j < 3; j++)
                         {
@@ -195,6 +207,7 @@ namespace Autolocker
         {
             if (checkBoxActive.Checked)
             {
+                found = false;
                 Thread searchThreadTop = new Thread(new ThreadStart(SearchAgentTop))
                 {
                     IsBackground = true
