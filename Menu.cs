@@ -86,16 +86,18 @@ namespace Autolocker
                         }
                     }
 
-                    // Checked location matches agent icon (only about 10% match required)
+                    // Checked location matches agent icon(only about 10 % match required)
                     if (matched >= 500)
                     {
                         // Selection repeated 3 times to make sure it works properly
                         for (int j = 0; j < 3; j++)
                         {
                             Cursor.Position = new Point(fullX - 40, fullY - 40);
+                            Thread.Sleep(20);
                             mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
                             mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
                             Cursor.Position = new Point(960, 810);
+                            Thread.Sleep(20);
                             mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
                             mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
                         }
@@ -119,8 +121,10 @@ namespace Autolocker
         {
             if (checkBoxActive.Checked)
             {
-                Thread searchThread = new Thread(new ThreadStart(SearchAgent));
-                searchThread.IsBackground = true;
+                Thread searchThread = new Thread(new ThreadStart(SearchAgent))
+                {
+                    IsBackground = true
+                };
                 searchThread.Start();
             }
         }
