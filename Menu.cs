@@ -12,6 +12,9 @@ namespace Autolocker
         [DllImport("user32.dll")]
         public static extern void mouse_event(int dwFlags, int dx, int dy, int dwData, int dwExtraInfo);
 
+        [DllImport("user32.dll")]
+        public static extern short GetAsyncKeyState(int vKey);
+
         private const int MOUSEEVENTF_LEFTDOWN = 0x02;
         private const int MOUSEEVENTF_LEFTUP = 0x04;
 
@@ -20,12 +23,47 @@ namespace Autolocker
             InitializeComponent();
             // Set Astra as the default value when opening the app
             comboBoxAgents.SelectedItem = "Astra";
+
+            Thread keypressListenerThread = new Thread(new ThreadStart(keypressListener))
+            {
+                IsBackground = true
+            };
+            keypressListenerThread.Start();
         }
 
         // Variable stores currently selected agent
         string agentName;
-
         bool found = false;
+        string randomBind = "F7";
+        string activeBind = "F8";
+
+        public void keypressListener()
+        {
+            while (true)
+            {
+                // Loop through all possible F keys
+                for (int i = 112; i < 124; i++)
+                {
+                    int keyState = GetAsyncKeyState(i);
+
+                    if (keyState != 0)
+                    {
+                        if(Enum.GetName(typeof(Keys), i) == randomBind)
+                        {
+                            if (checkBoxRandomAgent.Checked) checkBoxRandomAgent.Invoke(new UncheckRandomDelegate(UncheckRandom));
+                            else if (!checkBoxRandomAgent.Checked) checkBoxRandomAgent.Invoke(new CheckRandomDelegate(CheckRandom));
+                            Thread.Sleep(200);
+                        }
+                        if (Enum.GetName(typeof(Keys), i) == activeBind)
+                        {
+                            if (checkBoxActive.Checked) checkBoxActive.Invoke(new UncheckActiveDelegate(UncheckActive));
+                            else if (!checkBoxActive.Checked) checkBoxActive.Invoke(new CheckActiveDelegate(CheckActive));
+                            Thread.Sleep(200);
+                        }
+                    }
+                }
+            }
+        }
 
         delegate void GetSelectedItemDelegate();
 
@@ -34,11 +72,32 @@ namespace Autolocker
             agentName = this.comboBoxAgents.SelectedItem.ToString().ToLower();
         }
 
+
         delegate void UncheckActiveDelegate();
         private void UncheckActive()
         {
             checkBoxActive.Checked = false;
         }
+
+        delegate void CheckActiveDelegate();
+        private void CheckActive()
+        {
+            checkBoxActive.Checked = true;
+        }
+
+
+        delegate void UncheckRandomDelegate();
+        private void UncheckRandom()
+        {
+            checkBoxRandomAgent.Checked = false;
+        }
+
+        delegate void CheckRandomDelegate();
+        private void CheckRandom()
+        {
+            checkBoxRandomAgent.Checked = true;
+        }
+
 
         public void SearchAgentTop()
         {
@@ -238,5 +297,84 @@ namespace Autolocker
                 searchThreadBottom.Start();
             }
         }
+
+
+        private void SetRandomKeybind(string bind)
+        {
+            randomKeybindButton.Text = "[" + bind + "]";
+            randomBind = bind;
+        }
+
+        private void RandomKeybindButton_Click(object sender, EventArgs e)
+        {
+            randomKeybindButton.Text = "[...]";
+            Thread setRandomButtonTextThread = new Thread(new ThreadStart(SetRandomKeybindText))
+            {
+                IsBackground=true
+            };
+            setRandomButtonTextThread.Start();
+        }
+
+        private void SetRandomKeybindText()
+        {
+            bool pressed = false;
+            while (!pressed)
+            {
+                // Loop through all possible keys
+                for (int i = 112; i < 124; i++)
+                {
+                    // Check if the key is currently pressed
+                    int keyState = GetAsyncKeyState(i);
+
+                    // If the key is pressed, write it to the console
+                    if (keyState != 0)
+                    {
+                        randomKeybindButton.Invoke((Action)(() => SetRandomKeybind(Enum.GetName(typeof(Keys), i))));
+                        pressed = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void ActiveKeybindButton_Click(object sender, EventArgs e)
+        {
+            activeKeybindButton.Text = "[...]";
+            Thread setActiveButtonTextThread = new Thread(new ThreadStart(SetActiveKeybindText))
+            {
+                IsBackground = true
+            };
+            setActiveButtonTextThread.Start();
+        }
+
+        private void SetActiveKeybindText()
+        {
+            bool pressed = false;
+            while (!pressed)
+            {
+                // Loop through all possible keys
+                for (int i = 112; i < 124; i++)
+                {
+                    // Check if the key is currently pressed
+                    int keyState = GetAsyncKeyState(i);
+
+                    // If the key is pressed, write it to the console
+                    if (keyState != 0)
+                    {
+                        activeKeybindButton.Invoke((Action)(() => SetActiveKeybind(Enum.GetName(typeof(Keys), i))));
+                        pressed = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void SetActiveKeybind(string bind)
+        {
+            activeKeybindButton.Text = "[" + bind + "]";
+            activeBind = bind;
+        }
+
+        
     }
 }

@@ -28,10 +28,13 @@ namespace Autolocker
             this.comboBoxAgents = new System.Windows.Forms.ComboBox();
             this.checkBoxActive = new System.Windows.Forms.CheckBox();
             this.checkBoxRandomAgent = new System.Windows.Forms.CheckBox();
+            this.randomKeybindButton = new System.Windows.Forms.Button();
+            this.activeKeybindButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxAgents
             // 
+            this.comboBoxAgents.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBoxAgents.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAgents.FormattingEnabled = true;
             this.comboBoxAgents.Items.AddRange(new object[] {
@@ -64,7 +67,8 @@ namespace Autolocker
             // checkBoxActive
             // 
             this.checkBoxActive.AutoSize = true;
-            this.checkBoxActive.Location = new System.Drawing.Point(168, 120);
+            this.checkBoxActive.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxActive.Location = new System.Drawing.Point(184, 120);
             this.checkBoxActive.Name = "checkBoxActive";
             this.checkBoxActive.Size = new System.Drawing.Size(55, 17);
             this.checkBoxActive.TabIndex = 1;
@@ -75,19 +79,46 @@ namespace Autolocker
             // checkBoxRandomAgent
             // 
             this.checkBoxRandomAgent.AutoSize = true;
-            this.checkBoxRandomAgent.Location = new System.Drawing.Point(168, 87);
+            this.checkBoxRandomAgent.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxRandomAgent.Location = new System.Drawing.Point(184, 91);
             this.checkBoxRandomAgent.Name = "checkBoxRandomAgent";
-            this.checkBoxRandomAgent.Size = new System.Drawing.Size(91, 17);
+            this.checkBoxRandomAgent.Size = new System.Drawing.Size(61, 17);
             this.checkBoxRandomAgent.TabIndex = 1;
-            this.checkBoxRandomAgent.Text = "random agent";
+            this.checkBoxRandomAgent.Text = "random";
             this.checkBoxRandomAgent.UseVisualStyleBackColor = true;
             this.checkBoxRandomAgent.CheckedChanged += new System.EventHandler(this.CheckBoxRandomAgent_CheckedChanged);
+            // 
+            // randomKeybindButton
+            // 
+            this.randomKeybindButton.BackColor = System.Drawing.Color.Transparent;
+            this.randomKeybindButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.randomKeybindButton.Location = new System.Drawing.Point(138, 87);
+            this.randomKeybindButton.Name = "randomKeybindButton";
+            this.randomKeybindButton.Size = new System.Drawing.Size(40, 23);
+            this.randomKeybindButton.TabIndex = 2;
+            this.randomKeybindButton.Text = "[F7]";
+            this.randomKeybindButton.UseVisualStyleBackColor = false;
+            this.randomKeybindButton.Click += new System.EventHandler(this.RandomKeybindButton_Click);
+            // 
+            // activeKeybindButton
+            // 
+            this.activeKeybindButton.BackColor = System.Drawing.Color.Transparent;
+            this.activeKeybindButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.activeKeybindButton.Location = new System.Drawing.Point(138, 116);
+            this.activeKeybindButton.Name = "activeKeybindButton";
+            this.activeKeybindButton.Size = new System.Drawing.Size(40, 23);
+            this.activeKeybindButton.TabIndex = 3;
+            this.activeKeybindButton.Text = "[F8]";
+            this.activeKeybindButton.UseVisualStyleBackColor = false;
+            this.activeKeybindButton.Click += new System.EventHandler(this.ActiveKeybindButton_Click);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 200);
+            this.Controls.Add(this.activeKeybindButton);
+            this.Controls.Add(this.randomKeybindButton);
             this.Controls.Add(this.checkBoxActive);
             this.Controls.Add(this.comboBoxAgents);
             this.Controls.Add(this.checkBoxRandomAgent);
@@ -103,6 +134,8 @@ namespace Autolocker
         private System.Windows.Forms.ComboBox comboBoxAgents;
         private System.Windows.Forms.CheckBox checkBoxActive;
         private System.Windows.Forms.CheckBox checkBoxRandomAgent;
+        private Button randomKeybindButton;
+        private Button activeKeybindButton;
     }
 }
 
