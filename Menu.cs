@@ -24,7 +24,7 @@ namespace Autolocker
             // Set Astra as the default value when opening the app
             comboBoxAgents.SelectedItem = "Astra";
 
-            Thread keypressListenerThread = new Thread(new ThreadStart(keypressListener))
+            Thread keypressListenerThread = new Thread(new ThreadStart(KeypressListener))
             {
                 IsBackground = true
             };
@@ -37,10 +37,12 @@ namespace Autolocker
         string randomBind = "F7";
         string activeBind = "F8";
 
-        public void keypressListener()
+        public void KeypressListener()
         {
             while (true)
             {
+                // Minimum CPU usage
+                Thread.Sleep(50);
                 // Loop through all possible F keys
                 for (int i = 112; i < 124; i++)
                 {
@@ -320,13 +322,11 @@ namespace Autolocker
             bool pressed = false;
             while (!pressed)
             {
-                // Loop through all possible keys
+                // Minimum CPU usage
+                Thread.Sleep(50);
                 for (int i = 112; i < 124; i++)
                 {
-                    // Check if the key is currently pressed
                     int keyState = GetAsyncKeyState(i);
-
-                    // If the key is pressed, write it to the console
                     if (keyState != 0)
                     {
                         randomKeybindButton.Invoke((Action)(() => SetRandomKeybind(Enum.GetName(typeof(Keys), i))));
@@ -352,13 +352,12 @@ namespace Autolocker
             bool pressed = false;
             while (!pressed)
             {
-                // Loop through all possible keys
+                // Minimum CPU usage
+                Thread.Sleep(50);
+                // Loop through all possible F keys
                 for (int i = 112; i < 124; i++)
                 {
-                    // Check if the key is currently pressed
                     int keyState = GetAsyncKeyState(i);
-
-                    // If the key is pressed, write it to the console
                     if (keyState != 0)
                     {
                         activeKeybindButton.Invoke((Action)(() => SetActiveKeybind(Enum.GetName(typeof(Keys), i))));
