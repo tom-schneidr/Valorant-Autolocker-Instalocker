@@ -21,8 +21,6 @@ namespace Autolocker
         public Menu()
         {
             InitializeComponent();
-            // Set Astra as the default value when opening the app
-            comboBoxAgents.SelectedItem = "Astra";
 
             Thread keypressListenerThread = new Thread(new ThreadStart(KeypressListener))
             {
@@ -31,8 +29,8 @@ namespace Autolocker
             keypressListenerThread.Start();
         }
 
-        // Variable stores currently selected agent
-        string agentName;
+        // Variable stores currently selected agent - Jett is default
+        string agentName = "Jett";
         bool found = false;
         string randomBind = "F7";
         string activeBind = "F8";
@@ -67,34 +65,26 @@ namespace Autolocker
             }
         }
 
-        delegate void GetSelectedItemDelegate();
-
-        private void GetSelectedItem()
-        {
-            agentName = this.comboBoxAgents.SelectedItem.ToString().ToLower();
-        }
-
-
-        delegate void UncheckActiveDelegate();
+        private delegate void UncheckActiveDelegate();
         private void UncheckActive()
         {
             checkBoxActive.Checked = false;
         }
 
-        delegate void CheckActiveDelegate();
+        private delegate void CheckActiveDelegate();
         private void CheckActive()
         {
             checkBoxActive.Checked = true;
         }
 
 
-        delegate void UncheckRandomDelegate();
+        private delegate void UncheckRandomDelegate();
         private void UncheckRandom()
         {
             checkBoxRandomAgent.Checked = false;
         }
 
-        delegate void CheckRandomDelegate();
+        private delegate void CheckRandomDelegate();
         private void CheckRandom()
         {
             checkBoxRandomAgent.Checked = true;
@@ -106,12 +96,13 @@ namespace Autolocker
             // Keeps searching until the program is turned off (active checkmark removed)
             while (checkBoxActive.Checked && !found)
             {
-                // Set the selected agent if random pick isnt activated
-                if (!this.checkBoxRandomAgent.Checked)
-                {
-                    this.comboBoxAgents.Invoke(new GetSelectedItemDelegate(GetSelectedItem));
-                }
-
+                Thread.Sleep(50);
+                //// Set the selected agent if random pick isnt activated
+                //if (!this.checkBoxRandomAgent.Checked)
+                //{
+                //    this.comboBoxAgents.Invoke(new GetSelectedItemDelegate(GetSelectedItem));
+                //}
+                agentName = agentName.ToLower();
                 // Loads currently selected agent icon into bitmap
                 Image a = Properties.Resources.ResourceManager.GetObject(agentName) as Image;
                 Bitmap agent = new Bitmap(a);
@@ -180,6 +171,15 @@ namespace Autolocker
                 agent.Dispose();
                 fullscreen.Dispose();
                 a.Dispose();
+
+                if (checkBoxRandomAgent.Checked)
+                {
+                    Random rand = new Random();
+                    int randomNumber = rand.Next(0, 20);
+                    string[] agents = { "Astra", "Breach", "Brimstone", "Chamber", "Cypher", "Fade", "Gekko", "Harbor", "Jett", "KAYO", "Killjoy", "Omen", "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru" };
+
+                    agentName = agents[randomNumber];
+                }
             }
         }
 
@@ -188,12 +188,13 @@ namespace Autolocker
             // Keeps searching until the program is turned off (active checkmark removed)
             while (checkBoxActive.Checked && !found)
             {
-                // Set the selected agent if random pick isnt activated
-                if (!this.checkBoxRandomAgent.Checked)
-                {
-                    this.comboBoxAgents.Invoke(new GetSelectedItemDelegate(GetSelectedItem));
-                }
-
+                Thread.Sleep(50);
+                //// Set the selected agent if random pick isnt activated
+                //if (!this.checkBoxRandomAgent.Checked)
+                //{
+                //    this.comboBoxAgents.Invoke(new GetSelectedItemDelegate(GetSelectedItem));
+                //}
+                agentName = agentName.ToLower();
                 // Loads currently selected agent icon into bitmap
                 Image a = Properties.Resources.ResourceManager.GetObject(agentName) as Image;
                 Bitmap agent = new Bitmap(a);
@@ -262,6 +263,15 @@ namespace Autolocker
                 agent.Dispose();
                 fullscreen.Dispose();
                 a.Dispose();
+
+                if (checkBoxRandomAgent.Checked)
+                {
+                    Random rand = new Random();
+                    int randomNumber = rand.Next(0, 20);
+                    string[] agents = { "Astra", "Breach", "Brimstone", "Chamber", "Cypher", "Fade", "Gekko", "Harbor", "Jett", "KAYO", "Killjoy", "Omen", "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru" };
+
+                    agentName = agents[randomNumber];
+                }
             }
         }
 
@@ -272,8 +282,10 @@ namespace Autolocker
             {
                 Random rand = new Random();
                 int randomNumber = rand.Next(0, 20);
+                string[] agents = { "Astra", "Breach", "Brimstone", "Chamber", "Cypher", "Fade", "Gekko", "Harbor", "Jett", "KAYO", "Killjoy", "Omen", "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru" };
 
-                agentName = this.comboBoxAgents.Items[randomNumber].ToString().ToLower();
+                agentName = agents[randomNumber];
+                selectedAgentLabel.Text = "Selected agent: RANDOM";
             }
         }
 
@@ -286,8 +298,10 @@ namespace Autolocker
                 {
                     Random rand = new Random();
                     int randomNumber = rand.Next(0, 20);
+                    string[] agents = { "Astra", "Breach", "Brimstone", "Chamber", "Cypher", "Fade", "Gekko", "Harbor", "Jett", "KAYO", "Killjoy", "Omen", "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru" };
 
-                    agentName = this.comboBoxAgents.Items[randomNumber].ToString().ToLower();
+                    agentName = agents[randomNumber];
+                    selectedAgentLabel.Text = "Selected agent: RANDOM";
                 }
 
                 found = false;
@@ -378,6 +392,130 @@ namespace Autolocker
             activeBind = bind;
         }
 
-        
+        private void SelectAstraButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Astra";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectBreachButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Breach";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectBrimstoneButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Brimstone";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectChamberButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Chamber";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectCypherButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Cypher";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectFadeButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Fade";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectGekkoButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Gekko";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectHarborButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Harbor";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectJettButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Jett";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectKayoButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Kayo";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectKilljoyButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Killjoy";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectNeonButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Neon";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectOmenButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Omen";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectPhoenixButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Phoenix";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectRazeButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Raze";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectReynaButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Reyna";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectSageButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Sage";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectSkyeButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Skye";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectSovaButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Sova";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectViperButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Viper";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
+
+        private void SelectYoruButton_Click(object sender, EventArgs e)
+        {
+            agentName = "Yoru";
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
+        }
     }
 }
