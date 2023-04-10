@@ -176,8 +176,10 @@ namespace Autolocker
                     // Offset change, dependant on resolution (Resolution: 1920x1080) - Other resolutions arent supported
                     XOffset += 84;
                 }
+                // Free all resources used
                 agent.Dispose();
                 fullscreen.Dispose();
+                a.Dispose();
             }
         }
 
@@ -256,8 +258,10 @@ namespace Autolocker
                     // Offset change, dependant on resolution (Resolution: 1920x1080) - Other resolutions arent supported
                     XOffset += 84;
                 }
+                // Free all resources used
                 agent.Dispose();
                 fullscreen.Dispose();
+                a.Dispose();
             }
         }
 
