@@ -394,128 +394,191 @@ namespace Autolocker
 
         private void SelectAstraButton_Click(object sender, EventArgs e)
         {
-            agentName = "Astra";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Astra";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectBreachButton_Click(object sender, EventArgs e)
         {
-            agentName = "Breach";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Breach";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectBrimstoneButton_Click(object sender, EventArgs e)
         {
-            agentName = "Brimstone";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Brimstone";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectChamberButton_Click(object sender, EventArgs e)
         {
-            agentName = "Chamber";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Chamber";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectCypherButton_Click(object sender, EventArgs e)
         {
-            agentName = "Cypher";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Cypher";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectFadeButton_Click(object sender, EventArgs e)
         {
-            agentName = "Fade";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Fade";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectGekkoButton_Click(object sender, EventArgs e)
         {
-            agentName = "Gekko";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Gekko";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectHarborButton_Click(object sender, EventArgs e)
         {
-            agentName = "Harbor";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Harbor";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectJettButton_Click(object sender, EventArgs e)
         {
-            agentName = "Jett";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Jett";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectKayoButton_Click(object sender, EventArgs e)
         {
-            agentName = "Kayo";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Kayo";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectKilljoyButton_Click(object sender, EventArgs e)
         {
-            agentName = "Killjoy";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Killjoy";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectNeonButton_Click(object sender, EventArgs e)
         {
-            agentName = "Neon";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Neon";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectOmenButton_Click(object sender, EventArgs e)
         {
-            agentName = "Omen";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Omen";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectPhoenixButton_Click(object sender, EventArgs e)
         {
-            agentName = "Phoenix";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Phoenix";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectRazeButton_Click(object sender, EventArgs e)
         {
-            agentName = "Raze";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Raze";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectReynaButton_Click(object sender, EventArgs e)
         {
-            agentName = "Reyna";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Reyna";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectSageButton_Click(object sender, EventArgs e)
         {
-            agentName = "Sage";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Sage";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectSkyeButton_Click(object sender, EventArgs e)
         {
-            agentName = "Skye";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Skye";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectSovaButton_Click(object sender, EventArgs e)
         {
-            agentName = "Sova";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Sova";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectViperButton_Click(object sender, EventArgs e)
         {
-            agentName = "Viper";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Viper";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
 
         private void SelectYoruButton_Click(object sender, EventArgs e)
         {
-            agentName = "Yoru";
-            selectedAgentLabel.Text = "Selected agent: " + agentName;
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Yoru";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
         }
     }
 }
