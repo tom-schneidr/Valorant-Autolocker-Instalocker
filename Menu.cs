@@ -95,10 +95,11 @@ namespace Autolocker
         {
             map = null;
             int matched = 0;
-            int REQUIRED_ACCURACY = 10;
+            int RGB_TOLERANCE = 10;
+            double REQUIRED_ACCURACY = 0.8;
             while (checkBoxActive.Checked && map == null)
             {
-                Thread.Sleep(50);
+                Thread.Sleep(10);
 
                 int XOffset = 105;
                 int YOffset = 104;
@@ -125,11 +126,11 @@ namespace Autolocker
                         int g = mapPixel.G - fullPixel.G;
                         int b = mapPixel.B - fullPixel.B;
 
-                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
+                        if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
 
-                if (matched / 880 >= 0.8)
+                if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "ascent";
                     a.Dispose();
@@ -152,11 +153,11 @@ namespace Autolocker
                         int g = mapPixel.G - fullPixel.G;
                         int b = mapPixel.B - fullPixel.B;
 
-                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
+                        if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
 
-                if (matched / 880 >= 0.8)
+                if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "bind";
                     bi.Dispose();
@@ -179,11 +180,11 @@ namespace Autolocker
                         int g = mapPixel.G - fullPixel.G;
                         int b = mapPixel.B - fullPixel.B;
 
-                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
+                        if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
 
-                if (matched / 880 >= 0.8)
+                if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "breeze";
                     br.Dispose();
@@ -206,11 +207,11 @@ namespace Autolocker
                         int g = mapPixel.G - fullPixel.G;
                         int b = mapPixel.B - fullPixel.B;
 
-                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
+                        if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
 
-                if (matched / 880 >= 0.8)
+                if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "fracture";
                     f.Dispose();
@@ -233,11 +234,11 @@ namespace Autolocker
                         int g = mapPixel.G - fullPixel.G;
                         int b = mapPixel.B - fullPixel.B;
 
-                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
+                        if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
 
-                if (matched / 880 >= 0.8)
+                if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "haven";
                     h.Dispose();
@@ -260,11 +261,11 @@ namespace Autolocker
                         int g = mapPixel.G - fullPixel.G;
                         int b = mapPixel.B - fullPixel.B;
 
-                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
+                        if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
 
-                if (matched / 880 >= 0.8)
+                if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "icebox";
                     i.Dispose();
@@ -287,11 +288,11 @@ namespace Autolocker
                         int g = mapPixel.G - fullPixel.G;
                         int b = mapPixel.B - fullPixel.B;
 
-                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
+                        if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
 
-                if (matched / 880 >= 0.8)
+                if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "lotus";
                     l.Dispose();
@@ -314,11 +315,11 @@ namespace Autolocker
                         int g = mapPixel.G - fullPixel.G;
                         int b = mapPixel.B - fullPixel.B;
 
-                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
+                        if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
 
-                if (matched / 880 >= 0.8)
+                if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "pearl";
                     p.Dispose();
@@ -341,11 +342,11 @@ namespace Autolocker
                         int g = mapPixel.G - fullPixel.G;
                         int b = mapPixel.B - fullPixel.B;
 
-                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
+                        if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
 
-                if (matched / 880 >= 0.8)
+                if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "split";
                     s.Dispose();
@@ -354,7 +355,6 @@ namespace Autolocker
                     break;
                 }
             }
-            Console.WriteLine(map);
         }
         public void SearchAgentTop()
         {
@@ -366,7 +366,7 @@ namespace Autolocker
                 {
                     while (map == null && checkBoxUseConfig.Checked)
                     {
-                        Thread.Sleep(50);
+                        Thread.Sleep(5);
                     }
                     if (map == "ascent") ascentConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
                     else if (map == "bind") bindConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
@@ -469,7 +469,7 @@ namespace Autolocker
                 {
                     while (map == null && checkBoxUseConfig.Checked)
                     {
-                        Thread.Sleep(50);
+                        Thread.Sleep(5);
                     }
                     if (map == "ascent") ascentConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
                     else if (map == "bind") bindConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
