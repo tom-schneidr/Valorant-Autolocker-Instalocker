@@ -95,6 +95,7 @@ namespace Autolocker
         {
             map = null;
             int matched = 0;
+            int REQUIRED_ACCURACY = 500;
             while (checkBoxActive.Checked && map == null)
             {
                 Thread.Sleep(50);
@@ -112,7 +113,7 @@ namespace Autolocker
                 }
 
                 // Load maps
-                Image a = Properties.Resources.ascent;
+                Image a = Resources.ascent;
                 Bitmap ascent = new Bitmap(a);
 
                 for (int x = 0; x < 80; x++)
@@ -123,7 +124,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched >= 500)
+                if (matched >= REQUIRED_ACCURACY)
                 {
                     map = "ascent";
                     a.Dispose();
@@ -132,7 +133,7 @@ namespace Autolocker
                     break;
                 }
 
-                Image b = Properties.Resources.bind;
+                Image b = Resources.bind;
                 Bitmap bind = new Bitmap(b);
 
                 matched = 0;
@@ -144,7 +145,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched >= 500)
+                if (matched >= REQUIRED_ACCURACY)
                 {
                     map = "bind";
                     b.Dispose();
@@ -153,7 +154,7 @@ namespace Autolocker
                     break;
                 }
 
-                Image br = Properties.Resources.breeze;
+                Image br = Resources.breeze;
                 Bitmap breeze = new Bitmap(br);
 
                 matched = 0;
@@ -165,7 +166,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched >= 500)
+                if (matched >= REQUIRED_ACCURACY)
                 {
                     map = "breeze";
                     br.Dispose();
@@ -174,7 +175,7 @@ namespace Autolocker
                     break;
                 }
 
-                Image f = Properties.Resources.fracture;
+                Image f = Resources.fracture;
                 Bitmap fracture = new Bitmap(f);
 
                 matched = 0;
@@ -186,7 +187,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched >= 500)
+                if (matched >= REQUIRED_ACCURACY)
                 {
                     map = "fracture";
                     f.Dispose();
@@ -195,7 +196,7 @@ namespace Autolocker
                     break;
                 }
 
-                Image h = Properties.Resources.haven;
+                Image h = Resources.haven;
                 Bitmap haven = new Bitmap(h);
 
                 matched = 0;
@@ -207,7 +208,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched >= 500)
+                if (matched >= REQUIRED_ACCURACY)
                 {
                     map = "haven";
                     h.Dispose();
@@ -216,7 +217,7 @@ namespace Autolocker
                     break;
                 }
 
-                Image i = Properties.Resources.icebox;
+                Image i = Resources.icebox;
                 Bitmap icebox = new Bitmap(i);
 
                 matched = 0;
@@ -228,7 +229,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched >= 500)
+                if (matched >= REQUIRED_ACCURACY)
                 {
                     map = "icebox";
                     i.Dispose();
@@ -237,7 +238,7 @@ namespace Autolocker
                     break;
                 }
 
-                Image l = Properties.Resources.lotus;
+                Image l = Resources.lotus;
                 Bitmap lotus = new Bitmap(l);
 
                 matched = 0;
@@ -249,7 +250,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched >= 500)
+                if (matched >= REQUIRED_ACCURACY)
                 {
                     map = "lotus";
                     l.Dispose();
@@ -258,7 +259,7 @@ namespace Autolocker
                     break;
                 }
 
-                Image p = Properties.Resources.pearl;
+                Image p = Resources.pearl;
                 Bitmap pearl = new Bitmap(p);
 
                 matched = 0;
@@ -270,7 +271,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched >= 500)
+                if (matched >= REQUIRED_ACCURACY)
                 {
                     map = "pearl";
                     p.Dispose();
@@ -279,7 +280,7 @@ namespace Autolocker
                     break;
                 }
 
-                Image s = Properties.Resources.split;
+                Image s = Resources.split;
                 Bitmap split = new Bitmap(s);
 
                 matched = 0;
@@ -290,8 +291,8 @@ namespace Autolocker
                         if (split.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
                     }
                 }
-                
-                if (matched >= 500)
+
+                if (matched >= REQUIRED_ACCURACY)
                 {
                     map = "split";
                     s.Dispose();
@@ -325,7 +326,7 @@ namespace Autolocker
                 }
                 agentName = agentName.ToLower();
                 // Loads currently selected agent icon into bitmap
-                Image a = Properties.Resources.ResourceManager.GetObject(agentName) as Image;
+                Image a = Resources.ResourceManager.GetObject(agentName) as Image;
                 Bitmap agent = new Bitmap(a);
 
                 // Loads current screen into bitmap
@@ -428,7 +429,7 @@ namespace Autolocker
                 }
                 agentName = agentName.ToLower();
                 // Loads currently selected agent icon into bitmap
-                Image a = Properties.Resources.ResourceManager.GetObject(agentName) as Image;
+                Image a = Resources.ResourceManager.GetObject(agentName) as Image;
                 Bitmap agent = new Bitmap(a);
 
                 // Loads current screen into bitmap
@@ -565,7 +566,7 @@ namespace Autolocker
             }
             else if (map == "bind")
             {
-                if (bindConfigDropdown.SelectedItem == null)
+                if (bindConfigDropdown.SelectedItem == null) return;
                     agentName = bindConfigDropdown.SelectedItem.ToString();
             }
             else if (map == "breeze")
