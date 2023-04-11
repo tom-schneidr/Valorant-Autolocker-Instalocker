@@ -118,14 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ascent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\ascent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="astra" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\astra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="autolocker_valorant_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\autolocker-valorant-64.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bind" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\bind.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="breach" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\breach.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="breeze" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\breeze.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="brimstone" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\brimstone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,11 +148,20 @@
   <data name="fade" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\fade.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fracture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\fracture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="gekko" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\gekko.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="harbor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\harbor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="haven" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\haven.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icebox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\icebox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="jett" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\jett.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,11 +172,17 @@
   <data name="killjoy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\killjoy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="lotus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\lotus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="neon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\neon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="omen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\omen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pearl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\pearl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="phoenix" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\phoenix.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -177,6 +201,9 @@
   </data>
   <data name="sova" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\sova.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="split" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\split.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="viper" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\viper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

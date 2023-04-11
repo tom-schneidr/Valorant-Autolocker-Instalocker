@@ -63,6 +63,16 @@ namespace Autolocker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ascent {
+            get {
+                object obj = ResourceManager.GetObject("ascent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap astra {
             get {
                 object obj = ResourceManager.GetObject("astra", resourceCulture);
@@ -83,9 +93,29 @@ namespace Autolocker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bind {
+            get {
+                object obj = ResourceManager.GetObject("bind", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap breach {
             get {
                 object obj = ResourceManager.GetObject("breach", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap breeze {
+            get {
+                object obj = ResourceManager.GetObject("breeze", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,6 +163,16 @@ namespace Autolocker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fracture {
+            get {
+                object obj = ResourceManager.GetObject("fracture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gekko {
             get {
                 object obj = ResourceManager.GetObject("gekko", resourceCulture);
@@ -146,6 +186,26 @@ namespace Autolocker.Properties {
         internal static System.Drawing.Bitmap harbor {
             get {
                 object obj = ResourceManager.GetObject("harbor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap haven {
+            get {
+                object obj = ResourceManager.GetObject("haven", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icebox {
+            get {
+                object obj = ResourceManager.GetObject("icebox", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,6 +243,16 @@ namespace Autolocker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap lotus {
+            get {
+                object obj = ResourceManager.GetObject("lotus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap neon {
             get {
                 object obj = ResourceManager.GetObject("neon", resourceCulture);
@@ -196,6 +266,16 @@ namespace Autolocker.Properties {
         internal static System.Drawing.Bitmap omen {
             get {
                 object obj = ResourceManager.GetObject("omen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pearl {
+            get {
+                object obj = ResourceManager.GetObject("pearl", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -256,6 +336,16 @@ namespace Autolocker.Properties {
         internal static System.Drawing.Bitmap sova {
             get {
                 object obj = ResourceManager.GetObject("sova", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap split {
+            get {
+                object obj = ResourceManager.GetObject("split", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Autolocker.Properties;
+using System;
 using System.Drawing;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -21,7 +21,7 @@ namespace Autolocker
         public Menu()
         {
             InitializeComponent();
-
+            LoadConfig();
             Thread keypressListenerThread = new Thread(new ThreadStart(KeypressListener))
             {
                 IsBackground = true
@@ -34,6 +34,7 @@ namespace Autolocker
         bool found = false;
         string randomBind = "F7";
         string activeBind = "F8";
+        string map = null;
 
         public void KeypressListener()
         {
@@ -90,18 +91,238 @@ namespace Autolocker
             checkBoxRandomAgent.Checked = true;
         }
 
+        public void SearchMap()
+        {
+            map = null;
+            int matched = 0;
+            while (checkBoxActive.Checked && map == null)
+            {
+                Thread.Sleep(50);
 
+                int XOffset = 105;
+                int YOffset = 104;
+
+                // Loads current screen into bitmap
+                Rectangle bounds = Screen.PrimaryScreen.Bounds;
+                Bitmap fullscreen = new Bitmap(bounds.Width, bounds.Height);
+
+                using (Graphics graphics = Graphics.FromImage(fullscreen))
+                {
+                    graphics.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
+                }
+
+                // Load maps
+                Image a = Properties.Resources.ascent;
+                Bitmap ascent = new Bitmap(a);
+
+                for (int x = 0; x < 80; x++)
+                {
+                    for (int y = 0; y < 11; y++)
+                    {
+                        if (ascent.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                    }
+                }
+
+                if (matched >= 500)
+                {
+                    map = "ascent";
+                    a.Dispose();
+                    ascent.Dispose();
+                    fullscreen.Dispose();
+                    break;
+                }
+
+                Image b = Properties.Resources.bind;
+                Bitmap bind = new Bitmap(b);
+
+                matched = 0;
+                for (int x = 0; x < 80; x++)
+                {
+                    for (int y = 0; y < 11; y++)
+                    {
+                        if (bind.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                    }
+                }
+
+                if (matched >= 500)
+                {
+                    map = "bind";
+                    b.Dispose();
+                    bind.Dispose();
+                    fullscreen.Dispose();
+                    break;
+                }
+
+                Image br = Properties.Resources.breeze;
+                Bitmap breeze = new Bitmap(br);
+
+                matched = 0;
+                for (int x = 0; x < 80; x++)
+                {
+                    for (int y = 0; y < 11; y++)
+                    {
+                        if (breeze.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                    }
+                }
+
+                if (matched >= 500)
+                {
+                    map = "breeze";
+                    br.Dispose();
+                    breeze.Dispose();
+                    fullscreen.Dispose();
+                    break;
+                }
+
+                Image f = Properties.Resources.fracture;
+                Bitmap fracture = new Bitmap(f);
+
+                matched = 0;
+                for (int x = 0; x < 80; x++)
+                {
+                    for (int y = 0; y < 11; y++)
+                    {
+                        if (fracture.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                    }
+                }
+
+                if (matched >= 500)
+                {
+                    map = "fracture";
+                    f.Dispose();
+                    fracture.Dispose();
+                    fullscreen.Dispose();
+                    break;
+                }
+
+                Image h = Properties.Resources.haven;
+                Bitmap haven = new Bitmap(h);
+
+                matched = 0;
+                for (int x = 0; x < 80; x++)
+                {
+                    for (int y = 0; y < 11; y++)
+                    {
+                        if (haven.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                    }
+                }
+
+                if (matched >= 500)
+                {
+                    map = "haven";
+                    h.Dispose();
+                    haven.Dispose();
+                    fullscreen.Dispose();
+                    break;
+                }
+
+                Image i = Properties.Resources.icebox;
+                Bitmap icebox = new Bitmap(i);
+
+                matched = 0;
+                for (int x = 0; x < 80; x++)
+                {
+                    for (int y = 0; y < 11; y++)
+                    {
+                        if (icebox.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                    }
+                }
+
+                if (matched >= 500)
+                {
+                    map = "icebox";
+                    i.Dispose();
+                    icebox.Dispose();
+                    fullscreen.Dispose();
+                    break;
+                }
+
+                Image l = Properties.Resources.lotus;
+                Bitmap lotus = new Bitmap(l);
+
+                matched = 0;
+                for (int x = 0; x < 80; x++)
+                {
+                    for (int y = 0; y < 11; y++)
+                    {
+                        if (lotus.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                    }
+                }
+
+                if (matched >= 500)
+                {
+                    map = "lotus";
+                    l.Dispose();
+                    lotus.Dispose();
+                    fullscreen.Dispose();
+                    break;
+                }
+
+                Image p = Properties.Resources.pearl;
+                Bitmap pearl = new Bitmap(p);
+
+                matched = 0;
+                for (int x = 0; x < 80; x++)
+                {
+                    for (int y = 0; y < 11; y++)
+                    {
+                        if (pearl.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                    }
+                }
+
+                if (matched >= 500)
+                {
+                    map = "pearl";
+                    p.Dispose();
+                    pearl.Dispose();
+                    fullscreen.Dispose();
+                    break;
+                }
+
+                Image s = Properties.Resources.split;
+                Bitmap split = new Bitmap(s);
+
+                matched = 0;
+                for (int x = 0; x < 80; x++)
+                {
+                    for (int y = 0; y < 11; y++)
+                    {
+                        if (split.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                    }
+                }
+                
+                if (matched >= 500)
+                {
+                    map = "split";
+                    s.Dispose();
+                    split.Dispose();
+                    fullscreen.Dispose();
+                    break;
+                }
+            }
+        }
         public void SearchAgentTop()
         {
             // Keeps searching until the program is turned off (active checkmark removed)
             while (checkBoxActive.Checked && !found)
             {
                 Thread.Sleep(50);
-                //// Set the selected agent if random pick isnt activated
-                //if (!this.checkBoxRandomAgent.Checked)
-                //{
-                //    this.comboBoxAgents.Invoke(new GetSelectedItemDelegate(GetSelectedItem));
-                //}
+                if (checkBoxUseConfig.Checked)
+                {
+                    while (map == null && checkBoxUseConfig.Checked)
+                    {
+                        Thread.Sleep(50);
+                    }
+                    if (map == "ascent") ascentConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "bind") bindConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "breeze") breezeConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "fracture") fractureConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "haven") havenConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "icebox") iceboxConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "lotus") lotusConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "pearl") pearlConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "split") splitConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                }
                 agentName = agentName.ToLower();
                 // Loads currently selected agent icon into bitmap
                 Image a = Properties.Resources.ResourceManager.GetObject(agentName) as Image;
@@ -189,11 +410,22 @@ namespace Autolocker
             while (checkBoxActive.Checked && !found)
             {
                 Thread.Sleep(50);
-                //// Set the selected agent if random pick isnt activated
-                //if (!this.checkBoxRandomAgent.Checked)
-                //{
-                //    this.comboBoxAgents.Invoke(new GetSelectedItemDelegate(GetSelectedItem));
-                //}
+                if (checkBoxUseConfig.Checked)
+                {
+                    while (map == null && checkBoxUseConfig.Checked)
+                    {
+                        Thread.Sleep(50);
+                    }
+                    if (map == "ascent") ascentConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "bind") bindConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "breeze") breezeConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "fracture") fractureConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "haven") havenConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "icebox") iceboxConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "lotus") lotusConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "pearl") pearlConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "split") splitConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                }
                 agentName = agentName.ToLower();
                 // Loads currently selected agent icon into bitmap
                 Image a = Properties.Resources.ResourceManager.GetObject(agentName) as Image;
@@ -291,6 +523,12 @@ namespace Autolocker
 
         private void CheckBoxActive_CheckedChanged(object sender, EventArgs e)
         {
+            Thread searchMapThread = new Thread(new ThreadStart(SearchMap))
+            {
+                IsBackground = true
+            };
+            searchMapThread.Start();
+
             if (checkBoxActive.Checked)
             {
                 // If random agent is activated, set random agent
@@ -316,6 +554,58 @@ namespace Autolocker
                 searchThreadTop.Start();
                 searchThreadBottom.Start();
             }
+        }
+
+        private void SetConfigAgent(string map)
+        {
+            if (map == "ascent")
+            {
+                if (ascentConfigDropdown.SelectedItem == null) return;
+                agentName = ascentConfigDropdown.SelectedItem.ToString();
+            }
+            else if (map == "bind")
+            {
+                if (bindConfigDropdown.SelectedItem == null)
+                    agentName = bindConfigDropdown.SelectedItem.ToString();
+            }
+            else if (map == "breeze")
+            {
+                if (breezeConfigDropdown.SelectedItem == null) return;
+                agentName = breezeConfigDropdown.SelectedItem.ToString();
+            }
+            else if (map == "fracture")
+            {
+
+                if (fractureConfigDropdown.SelectedItem == null) return;
+                agentName = fractureConfigDropdown.SelectedItem.ToString();
+            }
+            else if (map == "haven")
+            {
+                if (havenConfigDropdown.SelectedItem == null) return;
+                agentName = havenConfigDropdown.SelectedItem.ToString();
+            }
+            else if (map == "icebox")
+            {
+                if (iceboxConfigDropdown.SelectedItem == null) return;
+                agentName = iceboxConfigDropdown.SelectedItem.ToString();
+            }
+            else if (map == "lotus")
+            {
+                if (lotusConfigDropdown.SelectedItem == null) return;
+                agentName = lotusConfigDropdown.SelectedItem.ToString();
+            }
+            else if (map == "pearl")
+            {
+                if (pearlConfigDropdown.SelectedItem == null) return;
+                agentName = pearlConfigDropdown.SelectedItem.ToString();
+            }
+            else if (map == "split")
+            {
+                if (splitConfigDropdown.SelectedItem == null) return;
+                agentName = splitConfigDropdown.SelectedItem.ToString();
+            }
+
+            selectedAgentLabel.Text = "Selected agent: " + agentName;
         }
 
 
@@ -579,6 +869,47 @@ namespace Autolocker
                 agentName = "Yoru";
                 selectedAgentLabel.Text = "Selected agent: " + agentName;
             }
+        }
+
+        private void SaveConfig()
+        {
+            if (ascentConfigDropdown.SelectedItem != null)
+                Settings.Default.configAscent = ascentConfigDropdown.SelectedItem.ToString();
+            if (bindConfigDropdown.SelectedItem != null)
+                Settings.Default.configBind = bindConfigDropdown.SelectedItem.ToString();
+            if (breezeConfigDropdown.SelectedItem != null)
+                Settings.Default.configBreeze = breezeConfigDropdown.SelectedItem.ToString();
+            if (fractureConfigDropdown.SelectedItem != null)
+                Settings.Default.configFracture = fractureConfigDropdown.SelectedItem.ToString();
+            if (havenConfigDropdown.SelectedItem != null)
+                Settings.Default.configHaven = havenConfigDropdown.SelectedItem.ToString();
+            if (iceboxConfigDropdown.SelectedItem != null)
+                Settings.Default.configIcebox = iceboxConfigDropdown.SelectedItem.ToString();
+            if (lotusConfigDropdown.SelectedItem != null)
+                Settings.Default.configLotus = lotusConfigDropdown.SelectedItem.ToString();
+            if (pearlConfigDropdown.SelectedItem != null)
+                Settings.Default.configPearl = pearlConfigDropdown.SelectedItem.ToString();
+            if (splitConfigDropdown.SelectedItem != null)
+                Settings.Default.configSplit = splitConfigDropdown.SelectedItem.ToString();
+            Settings.Default.Save();
+        }
+
+        private void LoadConfig()
+        {
+            ascentConfigDropdown.SelectedItem = Settings.Default.configAscent;
+            bindConfigDropdown.SelectedItem = Settings.Default.configBind;
+            breezeConfigDropdown.SelectedItem = Settings.Default.configBreeze;
+            fractureConfigDropdown.SelectedItem = Settings.Default.configFracture;
+            havenConfigDropdown.SelectedItem = Settings.Default.configHaven;
+            iceboxConfigDropdown.SelectedItem = Settings.Default.configIcebox;
+            lotusConfigDropdown.SelectedItem = Settings.Default.configLotus;
+            pearlConfigDropdown.SelectedItem = Settings.Default.configPearl;
+            splitConfigDropdown.SelectedItem = Settings.Default.configSplit;
+        }
+
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveConfig();
         }
     }
 }
