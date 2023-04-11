@@ -95,7 +95,7 @@ namespace Autolocker
         {
             map = null;
             int matched = 0;
-            int REQUIRED_ACCURACY = 500;
+            int REQUIRED_ACCURACY = 10;
             while (checkBoxActive.Checked && map == null)
             {
                 Thread.Sleep(50);
@@ -115,16 +115,21 @@ namespace Autolocker
                 // Load maps
                 Image a = Resources.ascent;
                 Bitmap ascent = new Bitmap(a);
-
                 for (int x = 0; x < 80; x++)
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        if (ascent.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                        Color mapPixel = ascent.GetPixel(x, y);
+                        Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
+                        int r = mapPixel.R - fullPixel.R;
+                        int g = mapPixel.G - fullPixel.G;
+                        int b = mapPixel.B - fullPixel.B;
+
+                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
                     }
                 }
 
-                if (matched >= REQUIRED_ACCURACY)
+                if (matched / 880 >= 0.8)
                 {
                     map = "ascent";
                     a.Dispose();
@@ -133,22 +138,28 @@ namespace Autolocker
                     break;
                 }
 
-                Image b = Resources.bind;
-                Bitmap bind = new Bitmap(b);
+                Image bi = Resources.bind;
+                Bitmap bind = new Bitmap(bi);
 
                 matched = 0;
                 for (int x = 0; x < 80; x++)
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        if (bind.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                        Color mapPixel = bind.GetPixel(x, y);
+                        Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
+                        int r = mapPixel.R - fullPixel.R;
+                        int g = mapPixel.G - fullPixel.G;
+                        int b = mapPixel.B - fullPixel.B;
+
+                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
                     }
                 }
 
-                if (matched >= REQUIRED_ACCURACY)
+                if (matched / 880 >= 0.8)
                 {
                     map = "bind";
-                    b.Dispose();
+                    bi.Dispose();
                     bind.Dispose();
                     fullscreen.Dispose();
                     break;
@@ -162,11 +173,17 @@ namespace Autolocker
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        if (breeze.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                        Color mapPixel = breeze.GetPixel(x, y);
+                        Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
+                        int r = mapPixel.R - fullPixel.R;
+                        int g = mapPixel.G - fullPixel.G;
+                        int b = mapPixel.B - fullPixel.B;
+
+                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
                     }
                 }
 
-                if (matched >= REQUIRED_ACCURACY)
+                if (matched / 880 >= 0.8)
                 {
                     map = "breeze";
                     br.Dispose();
@@ -183,11 +200,17 @@ namespace Autolocker
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        if (fracture.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                        Color mapPixel = fracture.GetPixel(x, y);
+                        Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
+                        int r = mapPixel.R - fullPixel.R;
+                        int g = mapPixel.G - fullPixel.G;
+                        int b = mapPixel.B - fullPixel.B;
+
+                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
                     }
                 }
 
-                if (matched >= REQUIRED_ACCURACY)
+                if (matched / 880 >= 0.8)
                 {
                     map = "fracture";
                     f.Dispose();
@@ -204,11 +227,17 @@ namespace Autolocker
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        if (haven.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                        Color mapPixel = haven.GetPixel(x, y);
+                        Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
+                        int r = mapPixel.R - fullPixel.R;
+                        int g = mapPixel.G - fullPixel.G;
+                        int b = mapPixel.B - fullPixel.B;
+
+                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
                     }
                 }
 
-                if (matched >= REQUIRED_ACCURACY)
+                if (matched / 880 >= 0.8)
                 {
                     map = "haven";
                     h.Dispose();
@@ -225,11 +254,17 @@ namespace Autolocker
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        if (icebox.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                        Color mapPixel = icebox.GetPixel(x, y);
+                        Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
+                        int r = mapPixel.R - fullPixel.R;
+                        int g = mapPixel.G - fullPixel.G;
+                        int b = mapPixel.B - fullPixel.B;
+
+                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
                     }
                 }
 
-                if (matched >= REQUIRED_ACCURACY)
+                if (matched / 880 >= 0.8)
                 {
                     map = "icebox";
                     i.Dispose();
@@ -246,11 +281,17 @@ namespace Autolocker
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        if (lotus.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                        Color mapPixel = lotus.GetPixel(x, y);
+                        Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
+                        int r = mapPixel.R - fullPixel.R;
+                        int g = mapPixel.G - fullPixel.G;
+                        int b = mapPixel.B - fullPixel.B;
+
+                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
                     }
                 }
 
-                if (matched >= REQUIRED_ACCURACY)
+                if (matched / 880 >= 0.8)
                 {
                     map = "lotus";
                     l.Dispose();
@@ -267,11 +308,17 @@ namespace Autolocker
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        if (pearl.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                        Color mapPixel = pearl.GetPixel(x, y);
+                        Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
+                        int r = mapPixel.R - fullPixel.R;
+                        int g = mapPixel.G - fullPixel.G;
+                        int b = mapPixel.B - fullPixel.B;
+
+                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
                     }
                 }
 
-                if (matched >= REQUIRED_ACCURACY)
+                if (matched / 880 >= 0.8)
                 {
                     map = "pearl";
                     p.Dispose();
@@ -288,11 +335,17 @@ namespace Autolocker
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        if (split.GetPixel(x, y) == fullscreen.GetPixel(x + XOffset, y + YOffset)) matched++;
+                        Color mapPixel = split.GetPixel(x, y);
+                        Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
+                        int r = mapPixel.R - fullPixel.R;
+                        int g = mapPixel.G - fullPixel.G;
+                        int b = mapPixel.B - fullPixel.B;
+
+                        if ((r * r + g * g + b * b) / 3 <= REQUIRED_ACCURACY * REQUIRED_ACCURACY) matched++;
                     }
                 }
 
-                if (matched >= REQUIRED_ACCURACY)
+                if (matched / 880 >= 0.8)
                 {
                     map = "split";
                     s.Dispose();
@@ -301,6 +354,7 @@ namespace Autolocker
                     break;
                 }
             }
+            Console.WriteLine(map);
         }
         public void SearchAgentTop()
         {
