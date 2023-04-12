@@ -430,8 +430,10 @@ namespace Autolocker
                     {
                         for (int y = 0; y < 80; y++)
                         {
+                            fullX = x + XOffset;
+                            fullY = y + YOffset;
                             Color agentPixel = agent.GetPixel(x, y);
-                            Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
+                            Color fullPixel = fullscreen.GetPixel(fullX, fullY);
                             int r = agentPixel.R - fullPixel.R;
                             int g = agentPixel.G - fullPixel.G;
                             int b = agentPixel.B - fullPixel.B;
