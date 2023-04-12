@@ -106,30 +106,40 @@ namespace Autolocker
             int matched = 0;
             int RGB_TOLERANCE = 10;
             double REQUIRED_ACCURACY = 0.8;
-            while (checkBoxActive.Checked && map == null)
+
+            // Variables for the images
+            Rectangle bounds;
+            Bitmap fullscreen;
+            Graphics graphics;
+
+            // Map
+            Image m;
+            Bitmap bitMap;
+
+            while (checkBoxActive.Checked && checkBoxUseConfig.Checked && map == null)
             {
-                Thread.Sleep(10);
+                Thread.Sleep(50);
 
                 int XOffset = 105;
                 int YOffset = 104;
 
                 // Loads current screen into bitmap
-                Rectangle bounds = Screen.PrimaryScreen.Bounds;
-                Bitmap fullscreen = new Bitmap(bounds.Width, bounds.Height);
+                bounds = Screen.PrimaryScreen.Bounds;
+                fullscreen = new Bitmap(bounds.Width, bounds.Height);
 
-                using (Graphics graphics = Graphics.FromImage(fullscreen))
+                using (graphics = Graphics.FromImage(fullscreen))
                 {
                     graphics.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
                 }
 
                 // Check maps
-                Image a = Resources.ascent;
-                Bitmap ascent = new Bitmap(a);
+                m = Resources.ascent;
+                bitMap = new Bitmap(m);
                 for (int x = 0; x < 80; x++)
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        Color mapPixel = ascent.GetPixel(x, y);
+                        Color mapPixel = bitMap.GetPixel(x, y);
                         Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
                         int r = mapPixel.R - fullPixel.R;
                         int g = mapPixel.G - fullPixel.G;
@@ -142,21 +152,21 @@ namespace Autolocker
                 if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "ascent";
-                    a.Dispose();
-                    ascent.Dispose();
+                    m.Dispose();
+                    bitMap.Dispose();
                     fullscreen.Dispose();
                     break;
                 }
 
-                Image bi = Resources.bind;
-                Bitmap bind = new Bitmap(bi);
+                m = Resources.bind;
+                bitMap = new Bitmap(m);
 
                 matched = 0;
                 for (int x = 0; x < 80; x++)
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        Color mapPixel = bind.GetPixel(x, y);
+                        Color mapPixel = bitMap.GetPixel(x, y);
                         Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
                         int r = mapPixel.R - fullPixel.R;
                         int g = mapPixel.G - fullPixel.G;
@@ -169,21 +179,21 @@ namespace Autolocker
                 if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "bind";
-                    bi.Dispose();
-                    bind.Dispose();
+                    m.Dispose();
+                    bitMap.Dispose();
                     fullscreen.Dispose();
                     break;
                 }
 
-                Image br = Resources.breeze;
-                Bitmap breeze = new Bitmap(br);
+                m = Resources.breeze;
+                bitMap = new Bitmap(m);
 
                 matched = 0;
                 for (int x = 0; x < 80; x++)
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        Color mapPixel = breeze.GetPixel(x, y);
+                        Color mapPixel = bitMap.GetPixel(x, y);
                         Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
                         int r = mapPixel.R - fullPixel.R;
                         int g = mapPixel.G - fullPixel.G;
@@ -196,21 +206,21 @@ namespace Autolocker
                 if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "breeze";
-                    br.Dispose();
-                    breeze.Dispose();
+                    m.Dispose();
+                    bitMap.Dispose();
                     fullscreen.Dispose();
                     break;
                 }
 
-                Image f = Resources.fracture;
-                Bitmap fracture = new Bitmap(f);
+                m = Resources.fracture;
+                bitMap = new Bitmap(m);
 
                 matched = 0;
                 for (int x = 0; x < 80; x++)
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        Color mapPixel = fracture.GetPixel(x, y);
+                        Color mapPixel = bitMap.GetPixel(x, y);
                         Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
                         int r = mapPixel.R - fullPixel.R;
                         int g = mapPixel.G - fullPixel.G;
@@ -223,21 +233,21 @@ namespace Autolocker
                 if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "fracture";
-                    f.Dispose();
-                    fracture.Dispose();
+                    m.Dispose();
+                    bitMap.Dispose();
                     fullscreen.Dispose();
                     break;
                 }
 
-                Image h = Resources.haven;
-                Bitmap haven = new Bitmap(h);
+                m = Resources.haven;
+                bitMap = new Bitmap(m);
 
                 matched = 0;
                 for (int x = 0; x < 80; x++)
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        Color mapPixel = haven.GetPixel(x, y);
+                        Color mapPixel = bitMap.GetPixel(x, y);
                         Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
                         int r = mapPixel.R - fullPixel.R;
                         int g = mapPixel.G - fullPixel.G;
@@ -250,21 +260,21 @@ namespace Autolocker
                 if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "haven";
-                    h.Dispose();
-                    haven.Dispose();
+                    m.Dispose();
+                    bitMap.Dispose();
                     fullscreen.Dispose();
                     break;
                 }
 
-                Image i = Resources.icebox;
-                Bitmap icebox = new Bitmap(i);
+                m = Resources.icebox;
+                bitMap = new Bitmap(m);
 
                 matched = 0;
                 for (int x = 0; x < 80; x++)
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        Color mapPixel = icebox.GetPixel(x, y);
+                        Color mapPixel = bitMap.GetPixel(x, y);
                         Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
                         int r = mapPixel.R - fullPixel.R;
                         int g = mapPixel.G - fullPixel.G;
@@ -277,21 +287,21 @@ namespace Autolocker
                 if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "icebox";
-                    i.Dispose();
-                    icebox.Dispose();
+                    m.Dispose();
+                    bitMap.Dispose();
                     fullscreen.Dispose();
                     break;
                 }
 
-                Image l = Resources.lotus;
-                Bitmap lotus = new Bitmap(l);
+                m = Resources.lotus;
+                bitMap = new Bitmap(m);
 
                 matched = 0;
                 for (int x = 0; x < 80; x++)
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        Color mapPixel = lotus.GetPixel(x, y);
+                        Color mapPixel = bitMap.GetPixel(x, y);
                         Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
                         int r = mapPixel.R - fullPixel.R;
                         int g = mapPixel.G - fullPixel.G;
@@ -304,21 +314,21 @@ namespace Autolocker
                 if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "lotus";
-                    l.Dispose();
-                    lotus.Dispose();
+                    m.Dispose();
+                    bitMap.Dispose();
                     fullscreen.Dispose();
                     break;
                 }
 
-                Image p = Resources.pearl;
-                Bitmap pearl = new Bitmap(p);
+                m = Resources.pearl;
+                bitMap = new Bitmap(m);
 
                 matched = 0;
                 for (int x = 0; x < 80; x++)
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        Color mapPixel = pearl.GetPixel(x, y);
+                        Color mapPixel = bitMap.GetPixel(x, y);
                         Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
                         int r = mapPixel.R - fullPixel.R;
                         int g = mapPixel.G - fullPixel.G;
@@ -331,21 +341,21 @@ namespace Autolocker
                 if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "pearl";
-                    p.Dispose();
-                    pearl.Dispose();
+                    m.Dispose();
+                    bitMap.Dispose();
                     fullscreen.Dispose();
                     break;
                 }
 
-                Image s = Resources.split;
-                Bitmap split = new Bitmap(s);
+                m = Resources.split;
+                bitMap = new Bitmap(m);
 
                 matched = 0;
                 for (int x = 0; x < 80; x++)
                 {
                     for (int y = 0; y < 11; y++)
                     {
-                        Color mapPixel = split.GetPixel(x, y);
+                        Color mapPixel = bitMap.GetPixel(x, y);
                         Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
                         int r = mapPixel.R - fullPixel.R;
                         int g = mapPixel.G - fullPixel.G;
@@ -358,113 +368,17 @@ namespace Autolocker
                 if (matched / 880 >= REQUIRED_ACCURACY)
                 {
                     map = "split";
-                    s.Dispose();
-                    split.Dispose();
-                    fullscreen.Dispose();
+                    m.Dispose();
+                    bitMap.Dispose();
+                    fullscreen.Dispose(); 
                     break;
                 }
-            }
-        }
-        public void SearchAgentTop()
-        {
-            // Keeps searching until the program is turned off (active checkmark removed)
-            while (checkBoxActive.Checked && !found)
-            {
-                Thread.Sleep(50);
-                if (checkBoxUseConfig.Checked)
-                {
-                    while (map == null && checkBoxUseConfig.Checked)
-                    {
-                        Thread.Sleep(5);
-                    }
-                    if (map == "ascent") ascentConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
-                    else if (map == "bind") bindConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
-                    else if (map == "breeze") breezeConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
-                    else if (map == "fracture") fractureConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
-                    else if (map == "haven") havenConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
-                    else if (map == "icebox") iceboxConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
-                    else if (map == "lotus") lotusConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
-                    else if (map == "pearl") pearlConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
-                    else if (map == "split") splitConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
-                }
-                agentName = agentName.ToLower();
-                // Loads currently selected agent icon into bitmap
-                Image a = Resources.ResourceManager.GetObject(agentName) as Image;
-                Bitmap agent = new Bitmap(a);
-
-                // Loads current screen into bitmap
-                Rectangle bounds = Screen.PrimaryScreen.Bounds;
-                Bitmap fullscreen = new Bitmap(bounds.Width, bounds.Height);
-
-                using (Graphics graphics = Graphics.FromImage(fullscreen))
-                {
-                    graphics.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
-                }
-
-                // Starting coordinates, dependant on resolution (Resolution: 1920x1080) - Other resolutions arent supported
-                int XOffset = 500;
-                int YOffset = 885;
-
-                int fullX = 0;
-                int fullY = 0;
-                for (int i = 0; i < 11; i++)
-                {
-                    int matched = 0;
-                    for (int x = 0; x < 80; x++)
-                    {
-                        for (int y = 0; y < 80; y++)
-                        {
-                            fullX = x + XOffset;
-                            fullY = y + YOffset;
-
-                            Color fullscreenPixel = fullscreen.GetPixel(fullX, fullY);
-                            Color agentPixel = agent.GetPixel(x, y);
-
-                            if (fullscreenPixel == agentPixel)
-                            {
-                                matched++;
-                            }
-                        }
-                    }
-
-                    // Checked location matches agent icon(only about 10 % match required)
-                    if (matched >= 500)
-                    {
-                        found = true;
-                        this.checkBoxActive.Invoke(new UncheckActiveDelegate(UncheckActive));
-
-                        // Selection repeated for 5 seconds to make sure an agent is selected
-                        TimeSpan endtime = DateTime.Now.AddSeconds(5).TimeOfDay;
-                        while (DateTime.Now.TimeOfDay <= endtime)
-                        {
-                            Cursor.Position = new Point(fullX - 40, fullY - 40);
-                            Thread.Sleep(20);
-                            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-                            mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-                            Cursor.Position = new Point(960, 810);
-                            Thread.Sleep(20);
-                            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-                            mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-                        }
-                        break;
-                    }
-
-                    // Offset change, dependant on resolution (Resolution: 1920x1080) - Other resolutions arent supported
-                    XOffset += 84;
-                }
-                // Free all resources used
-                agent.Dispose();
+                m.Dispose();
+                bitMap.Dispose();
                 fullscreen.Dispose();
-                a.Dispose();
-
-                if (checkBoxRandomAgent.Checked)
-                {
-                    checkBoxRandomAgent.Invoke((Action)(() => SelectRandomAgent()));
-                }
             }
         }
-
-        public void SearchAgentBottom()
+        public void SearchAgent(int row)
         {
             // Keeps searching until the program is turned off (active checkmark removed)
             while (checkBoxActive.Checked && !found)
@@ -472,9 +386,9 @@ namespace Autolocker
                 Thread.Sleep(50);
                 if (checkBoxUseConfig.Checked)
                 {
-                    while (map == null && checkBoxUseConfig.Checked)
+                    while (map == null && checkBoxUseConfig.Checked && checkBoxActive.Checked)
                     {
-                        Thread.Sleep(5);
+                        Thread.Sleep(10);
                     }
                     if (map == "ascent") ascentConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
                     else if (map == "bind") bindConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
@@ -502,7 +416,7 @@ namespace Autolocker
 
                 // Starting coordinates, dependant on resolution (Resolution: 1920x1080) - Other resolutions arent supported
                 int XOffset = 500;
-                int YOffset = 969;
+                int YOffset = 885 + (row * 84);
 
                 int fullX = 0;
                 int fullY = 0;
@@ -574,14 +488,16 @@ namespace Autolocker
 
         private void CheckBoxActive_CheckedChanged(object sender, EventArgs e)
         {
-            Thread searchMapThread = new Thread(new ThreadStart(SearchMap))
-            {
-                IsBackground = true
-            };
-            searchMapThread.Start();
-
             if (checkBoxActive.Checked)
             {
+                if (checkBoxUseConfig.Checked)
+                {
+                    Thread searchMapThread = new Thread(new ThreadStart(SearchMap))
+                    {
+                        IsBackground = true
+                    };
+                    searchMapThread.Start();
+                }
                 // If random agent is activated, set random agent
                 if (checkBoxRandomAgent.Checked)
                 {
@@ -589,11 +505,11 @@ namespace Autolocker
                 }
 
                 found = false;
-                Thread searchThreadTop = new Thread(new ThreadStart(SearchAgentTop))
+                Thread searchThreadTop = new Thread(() => SearchAgent(0))
                 {
                     IsBackground = true
                 };
-                Thread searchThreadBottom = new Thread(new ThreadStart(SearchAgentBottom))
+                Thread searchThreadBottom = new Thread(() => SearchAgent(1))
                 {
                     IsBackground = true
                 };
@@ -966,6 +882,21 @@ namespace Autolocker
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveConfig();
+        }
+
+        private void CheckBoxUseConfig_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxUseConfig.Checked)
+            {
+                if (checkBoxActive.Checked)
+                {
+                    Thread searchMapThread = new Thread(new ThreadStart(SearchMap))
+                    {
+                        IsBackground = true
+                    };
+                    searchMapThread.Start();
+                }
+            }
         }
     }
 }

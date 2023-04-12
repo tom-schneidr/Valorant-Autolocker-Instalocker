@@ -138,6 +138,7 @@ namespace Autolocker
             this.checkBoxUseConfig.TabIndex = 52;
             this.checkBoxUseConfig.Text = "use config";
             this.checkBoxUseConfig.UseVisualStyleBackColor = true;
+            this.checkBoxUseConfig.CheckedChanged += new System.EventHandler(this.CheckBoxUseConfig_CheckedChanged);
             // 
             // selectedAgentLabel
             // 
