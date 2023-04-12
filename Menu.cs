@@ -380,6 +380,9 @@ namespace Autolocker
         }
         public void SearchAgent(int row)
         {
+            int RGB_TOLERANCE = 10;
+            double REQUIRED_ACCURACY = 0.8;
+            int AGENTPIXELS = 80 * 80;
             // Keeps searching until the program is turned off (active checkmark removed)
             while (checkBoxActive.Checked && !found)
             {
@@ -427,21 +430,17 @@ namespace Autolocker
                     {
                         for (int y = 0; y < 80; y++)
                         {
-                            fullX = x + XOffset;
-                            fullY = y + YOffset;
-
-                            Color fullscreenPixel = fullscreen.GetPixel(fullX, fullY);
                             Color agentPixel = agent.GetPixel(x, y);
+                            Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
+                            int r = agentPixel.R - fullPixel.R;
+                            int g = agentPixel.G - fullPixel.G;
+                            int b = agentPixel.B - fullPixel.B;
 
-                            if (fullscreenPixel == agentPixel)
-                            {
-                                matched++;
-                            }
+                            if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                         }
                     }
 
-                    // Checked location matches agent icon(only about 10 % match required)
-                    if (matched >= 500)
+                    if (matched / AGENTPIXELS >= REQUIRED_ACCURACY)
                     {
                         found = true;
                         this.checkBoxActive.Invoke(new UncheckActiveDelegate(UncheckActive));
