@@ -29,7 +29,8 @@ namespace Autolocker
             keypressListenerThread.Start();
         }
 
-        // Variable stores currently selected agent - Jett is default
+        // Variables YAY
+        readonly string[] allAgents = { "Astra", "Breach", "Brimstone", "Chamber", "Cypher", "Fade", "Gekko", "Harbor", "Jett", "KAYO", "Killjoy", "Omen", "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru" };
         string agentName = "Jett";
         bool found = false;
         string randomBind = "F7";
@@ -91,6 +92,14 @@ namespace Autolocker
             checkBoxRandomAgent.Checked = true;
         }
 
+        private void SelectRandomAgent()
+        {
+            Random rand = new Random();
+            int randomNumber = rand.Next(0, allAgents.Length - 1);
+            agentName = allAgents[randomNumber];
+            selectedAgentLabel.Text = "Selected agent: RANDOM";
+        }
+
         public void SearchMap()
         {
             map = null;
@@ -113,7 +122,7 @@ namespace Autolocker
                     graphics.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
                 }
 
-                // Load maps
+                // Check maps
                 Image a = Resources.ascent;
                 Bitmap ascent = new Bitmap(a);
                 for (int x = 0; x < 80; x++)
@@ -450,11 +459,7 @@ namespace Autolocker
 
                 if (checkBoxRandomAgent.Checked)
                 {
-                    Random rand = new Random();
-                    int randomNumber = rand.Next(0, 20);
-                    string[] agents = { "Astra", "Breach", "Brimstone", "Chamber", "Cypher", "Fade", "Gekko", "Harbor", "Jett", "KAYO", "Killjoy", "Omen", "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru" };
-
-                    agentName = agents[randomNumber];
+                    checkBoxRandomAgent.Invoke((Action)(() => SelectRandomAgent()));
                 }
             }
         }
@@ -553,11 +558,7 @@ namespace Autolocker
 
                 if (checkBoxRandomAgent.Checked)
                 {
-                    Random rand = new Random();
-                    int randomNumber = rand.Next(0, 20);
-                    string[] agents = { "Astra", "Breach", "Brimstone", "Chamber", "Cypher", "Fade", "Gekko", "Harbor", "Jett", "KAYO", "Killjoy", "Omen", "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru" };
-
-                    agentName = agents[randomNumber];
+                    checkBoxRandomAgent.Invoke((Action)(() => SelectRandomAgent()));
                 }
             }
         }
@@ -567,12 +568,7 @@ namespace Autolocker
             // If random agent is activated, set random agent
             if (checkBoxRandomAgent.Checked)
             {
-                Random rand = new Random();
-                int randomNumber = rand.Next(0, 20);
-                string[] agents = { "Astra", "Breach", "Brimstone", "Chamber", "Cypher", "Fade", "Gekko", "Harbor", "Jett", "KAYO", "Killjoy", "Omen", "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru" };
-
-                agentName = agents[randomNumber];
-                selectedAgentLabel.Text = "Selected agent: RANDOM";
+                checkBoxRandomAgent.Invoke((Action)(() => SelectRandomAgent()));
             }
         }
 
@@ -589,12 +585,7 @@ namespace Autolocker
                 // If random agent is activated, set random agent
                 if (checkBoxRandomAgent.Checked)
                 {
-                    Random rand = new Random();
-                    int randomNumber = rand.Next(0, 20);
-                    string[] agents = { "Astra", "Breach", "Brimstone", "Chamber", "Cypher", "Fade", "Gekko", "Harbor", "Jett", "KAYO", "Killjoy", "Omen", "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru" };
-
-                    agentName = agents[randomNumber];
-                    selectedAgentLabel.Text = "Selected agent: RANDOM";
+                    checkBoxRandomAgent.Invoke((Action)(() => SelectRandomAgent()));
                 }
 
                 found = false;
@@ -662,7 +653,6 @@ namespace Autolocker
 
             selectedAgentLabel.Text = "Selected agent: " + agentName;
         }
-
 
         private void SetRandomKeybind(string bind)
         {
@@ -946,6 +936,10 @@ namespace Autolocker
                 Settings.Default.configPearl = pearlConfigDropdown.SelectedItem.ToString();
             if (splitConfigDropdown.SelectedItem != null)
                 Settings.Default.configSplit = splitConfigDropdown.SelectedItem.ToString();
+            if (randomBind != null)
+                Settings.Default.randomKeybind = randomBind;
+            if (activeBind != null)
+                Settings.Default.activeKeybind = activeBind;
             Settings.Default.Save();
         }
 
@@ -960,6 +954,13 @@ namespace Autolocker
             lotusConfigDropdown.SelectedItem = Settings.Default.configLotus;
             pearlConfigDropdown.SelectedItem = Settings.Default.configPearl;
             splitConfigDropdown.SelectedItem = Settings.Default.configSplit;
+
+            if (Settings.Default.randomKeybind != "")
+                randomBind = Settings.Default.randomKeybind;
+            randomKeybindButton.Text = "[" + randomBind + "]";
+            if (Settings.Default.activeKeybind != "")
+                activeBind = Settings.Default.activeKeybind;
+            activeKeybindButton.Text = "[" + activeBind + "]";
         }
 
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)

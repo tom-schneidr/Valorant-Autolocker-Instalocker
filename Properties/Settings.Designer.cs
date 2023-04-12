@@ -130,5 +130,29 @@ namespace Autolocker.Properties {
                 this["configSplit"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string randomKeybind {
+            get {
+                return ((string)(this["randomKeybind"]));
+            }
+            set {
+                this["randomKeybind"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string activeKeybind {
+            get {
+                return ((string)(this["activeKeybind"]));
+            }
+            set {
+                this["activeKeybind"] = value;
+            }
+        }
     }
 }
