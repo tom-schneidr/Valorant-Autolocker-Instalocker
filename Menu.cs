@@ -382,7 +382,7 @@ namespace Autolocker
         {
             int RGB_TOLERANCE = 10;
             double REQUIRED_ACCURACY = 0.8;
-            int AGENTPIXELS = 80 * 80;
+            double AGENTPIXELS = 80 * 80;
             // Keeps searching until the program is turned off (active checkmark removed)
             while (checkBoxActive.Checked && !found)
             {
@@ -423,6 +423,8 @@ namespace Autolocker
 
                 int fullX = 0;
                 int fullY = 0;
+
+                int test = 0;
                 for (int i = 0; i < 11; i++)
                 {
                     int matched = 0;
@@ -434,6 +436,7 @@ namespace Autolocker
                             fullY = y + YOffset;
                             Color agentPixel = agent.GetPixel(x, y);
                             Color fullPixel = fullscreen.GetPixel(fullX, fullY);
+                            if (agentPixel == fullPixel) test++;
                             int r = agentPixel.R - fullPixel.R;
                             int g = agentPixel.G - fullPixel.G;
                             int b = agentPixel.B - fullPixel.B;
@@ -441,8 +444,8 @@ namespace Autolocker
                             if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                         }
                     }
-
-                    if (matched / AGENTPIXELS >= REQUIRED_ACCURACY)
+                    Console.WriteLine(matched / AGENTPIXELS);
+                    if ((matched / AGENTPIXELS) >= REQUIRED_ACCURACY)
                     {
                         found = true;
                         this.checkBoxActive.Invoke(new UncheckActiveDelegate(UncheckActive));
