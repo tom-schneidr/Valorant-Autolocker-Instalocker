@@ -25,6 +25,7 @@ namespace Autolocker
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.agentPage = new System.Windows.Forms.TabPage();
             this.checkBoxUseConfig = new System.Windows.Forms.CheckBox();
@@ -846,6 +847,7 @@ namespace Autolocker
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1065, 470);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Menu";
             this.Text = "Autolocker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menu_FormClosing);
