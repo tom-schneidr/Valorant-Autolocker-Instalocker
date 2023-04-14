@@ -122,6 +122,7 @@ namespace Autolocker
 
                 int XOffset = 105;
                 int YOffset = 104;
+                double MAPPIXELS = 80 * 11;
 
                 // Loads current screen into bitmap
                 bounds = Screen.PrimaryScreen.Bounds;
@@ -149,7 +150,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched / 880 >= REQUIRED_ACCURACY)
+                if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "ascent";
                     m.Dispose();
@@ -176,7 +177,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched / 880 >= REQUIRED_ACCURACY)
+                if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "bind";
                     m.Dispose();
@@ -203,7 +204,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched / 880 >= REQUIRED_ACCURACY)
+                if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "breeze";
                     m.Dispose();
@@ -230,7 +231,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched / 880 >= REQUIRED_ACCURACY)
+                if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "fracture";
                     m.Dispose();
@@ -257,7 +258,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched / 880 >= REQUIRED_ACCURACY)
+                if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "haven";
                     m.Dispose();
@@ -284,7 +285,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched / 880 >= REQUIRED_ACCURACY)
+                if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "icebox";
                     m.Dispose();
@@ -311,7 +312,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched / 880 >= REQUIRED_ACCURACY)
+                if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "lotus";
                     m.Dispose();
@@ -338,7 +339,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched / 880 >= REQUIRED_ACCURACY)
+                if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "pearl";
                     m.Dispose();
@@ -365,7 +366,7 @@ namespace Autolocker
                     }
                 }
 
-                if (matched / 880 >= REQUIRED_ACCURACY)
+                if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "split";
                     m.Dispose();

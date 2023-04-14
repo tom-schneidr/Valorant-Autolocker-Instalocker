@@ -846,7 +846,6 @@ namespace Autolocker
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1065, 470);
             this.Controls.Add(this.tabControl1);
-            this.Icon = global::Autolocker.Properties.Resources.autolocker_valorant_64;
             this.Name = "Menu";
             this.Text = "Autolocker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menu_FormClosing);
