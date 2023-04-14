@@ -56,6 +56,7 @@ namespace Autolocker
             this.checkBoxActive = new System.Windows.Forms.CheckBox();
             this.checkBoxRandomAgent = new System.Windows.Forms.CheckBox();
             this.configPage = new System.Windows.Forms.TabPage();
+            this.buttonBackgroundImage = new System.Windows.Forms.Button();
             this.havenConfigLabel = new System.Windows.Forms.Label();
             this.havenConfigDropdown = new System.Windows.Forms.ComboBox();
             this.splitConfigLabel = new System.Windows.Forms.Label();
@@ -74,6 +75,7 @@ namespace Autolocker
             this.bindConfigDropdown = new System.Windows.Forms.ComboBox();
             this.ascentConfigLabel = new System.Windows.Forms.Label();
             this.ascentConfigDropdown = new System.Windows.Forms.ComboBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.agentPage.SuspendLayout();
             this.configPage.SuspendLayout();
@@ -437,6 +439,7 @@ namespace Autolocker
             // 
             // configPage
             // 
+            this.configPage.Controls.Add(this.buttonBackgroundImage);
             this.configPage.Controls.Add(this.havenConfigLabel);
             this.configPage.Controls.Add(this.havenConfigDropdown);
             this.configPage.Controls.Add(this.splitConfigLabel);
@@ -462,6 +465,16 @@ namespace Autolocker
             this.configPage.TabIndex = 1;
             this.configPage.Text = "Config";
             this.configPage.UseVisualStyleBackColor = true;
+            // 
+            // buttonBackgroundImage
+            // 
+            this.buttonBackgroundImage.Location = new System.Drawing.Point(525, 271);
+            this.buttonBackgroundImage.Name = "buttonBackgroundImage";
+            this.buttonBackgroundImage.Size = new System.Drawing.Size(160, 31);
+            this.buttonBackgroundImage.TabIndex = 18;
+            this.buttonBackgroundImage.Text = "choose background";
+            this.buttonBackgroundImage.UseVisualStyleBackColor = true;
+            this.buttonBackgroundImage.Click += new System.EventHandler(this.ButtonBackgroundImage_Click);
             // 
             // havenConfigLabel
             // 
@@ -841,6 +854,10 @@ namespace Autolocker
             this.ascentConfigDropdown.Size = new System.Drawing.Size(121, 27);
             this.ascentConfigDropdown.TabIndex = 0;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -910,6 +927,8 @@ namespace Autolocker
         private ComboBox breezeConfigDropdown;
         private Label bindConfigLabel;
         private ComboBox bindConfigDropdown;
+        private OpenFileDialog openFileDialog1;
+        private Button buttonBackgroundImage;
     }
 }
 

@@ -154,5 +154,17 @@ namespace Autolocker.Properties {
                 this["activeKeybind"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string backgroundImagePath {
+            get {
+                return ((string)(this["backgroundImagePath"]));
+            }
+            set {
+                this["backgroundImagePath"] = value;
+            }
+        }
     }
 }

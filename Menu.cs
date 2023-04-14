@@ -1,6 +1,7 @@
 ﻿using Autolocker.Properties;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -882,6 +883,12 @@ namespace Autolocker
             if (Settings.Default.activeKeybind != "")
                 activeBind = Settings.Default.activeKeybind;
             activeKeybindButton.Text = "[" + activeBind + "]";
+
+            if (Settings.Default.backgroundImagePath != "")
+            {
+                agentPage.BackgroundImage = Image.FromFile(Settings.Default.backgroundImagePath);
+                configPage.BackgroundImage = Image.FromFile(Settings.Default.backgroundImagePath);
+            } 
         }
 
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)
@@ -901,6 +908,23 @@ namespace Autolocker
                     };
                     searchMapThread.Start();
                 }
+            }
+        }
+
+        private void ButtonBackgroundImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Image Files (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png"
+            };
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string targetPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "CustomBackgroundImage.jpg");
+                File.Copy(openFileDialog.FileName, targetPath, true);
+                Settings.Default.backgroundImagePath = targetPath;
+                Settings.Default.Save();
+                agentPage.BackgroundImage = Image.FromFile(targetPath);
+                configPage.BackgroundImage = Image.FromFile(targetPath);
             }
         }
     }
