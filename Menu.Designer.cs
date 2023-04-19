@@ -468,7 +468,7 @@ namespace Autolocker
             // 
             // buttonBackgroundImage
             // 
-            this.buttonBackgroundImage.Location = new System.Drawing.Point(525, 271);
+            this.buttonBackgroundImage.Location = new System.Drawing.Point(478, 271);
             this.buttonBackgroundImage.Name = "buttonBackgroundImage";
             this.buttonBackgroundImage.Size = new System.Drawing.Size(160, 31);
             this.buttonBackgroundImage.TabIndex = 18;
