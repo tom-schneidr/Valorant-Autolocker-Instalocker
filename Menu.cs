@@ -37,6 +37,7 @@ namespace Autolocker
         string randomBind = "F7";
         string activeBind = "F8";
         string map = null;
+        Image background;
 
         public void KeypressListener()
         {
@@ -887,11 +888,9 @@ namespace Autolocker
 
             if (Settings.Default.backgroundImagePath != "")
             {
-                try {
-                    Image background = Image.FromFile(Settings.Default.backgroundImagePath);
-                    agentPage.BackgroundImage = background;
-                    configPage.BackgroundImage = background;
-                } catch { }
+                background = Image.FromFile(Settings.Default.backgroundImagePath);
+                agentPage.BackgroundImage = background;
+                configPage.BackgroundImage = background;
             } 
         }
 
@@ -925,12 +924,44 @@ namespace Autolocker
             {
                 string targetPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "CustomBackgroundImage.jpg");
 
-                File.Copy(openFileDialog.FileName, targetPath, true);
-                Settings.Default.backgroundImagePath = targetPath;
-                Settings.Default.Save();
-                Image background = Image.FromFile(targetPath);
-                agentPage.BackgroundImage = background;
-                configPage.BackgroundImage = background;
+                if  (File.Exists(targetPath))
+                {
+                    string tmpPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "tmp.jpg");
+                    File.Copy(openFileDialog.FileName, tmpPath, true);
+                    background.Dispose();
+                    background = Image.FromFile(tmpPath);
+                    agentPage.BackgroundImage = background;
+                    configPage.BackgroundImage = background;
+                    File.Delete(targetPath);
+
+                    File.Copy(tmpPath, targetPath, true);
+                    background.Dispose();
+                    background = Image.FromFile(targetPath);
+                    agentPage.BackgroundImage = background;
+                    configPage.BackgroundImage = background;
+
+                    File.Delete(tmpPath);
+                }
+                else
+                {
+                    File.Copy(openFileDialog.FileName, targetPath, true);
+                    Settings.Default.backgroundImagePath = targetPath;
+                    Settings.Default.Save();
+                    background = Image.FromFile(targetPath);
+                    agentPage.BackgroundImage = background;
+                    configPage.BackgroundImage = background;
+                }
+            }
+        }
+
+        private void ButtonRemoveBackgroundImage_Click(object sender, EventArgs e)
+        {
+            if (background != null)
+            {
+                background.Dispose();
+                agentPage.BackgroundImage = null;
+                configPage.BackgroundImage = null;
+                Settings.Default.backgroundImagePath = "";
             }
         }
     }

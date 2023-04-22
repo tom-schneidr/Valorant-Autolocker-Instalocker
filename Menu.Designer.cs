@@ -56,7 +56,7 @@ namespace Autolocker
             this.checkBoxActive = new System.Windows.Forms.CheckBox();
             this.checkBoxRandomAgent = new System.Windows.Forms.CheckBox();
             this.configPage = new System.Windows.Forms.TabPage();
-            this.buttonBackgroundImage = new System.Windows.Forms.Button();
+            this.buttonSetBackgroundImage = new System.Windows.Forms.Button();
             this.havenConfigLabel = new System.Windows.Forms.Label();
             this.havenConfigDropdown = new System.Windows.Forms.ComboBox();
             this.splitConfigLabel = new System.Windows.Forms.Label();
@@ -76,6 +76,7 @@ namespace Autolocker
             this.ascentConfigLabel = new System.Windows.Forms.Label();
             this.ascentConfigDropdown = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.buttonRemoveBackgroundImage = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.agentPage.SuspendLayout();
             this.configPage.SuspendLayout();
@@ -95,6 +96,7 @@ namespace Autolocker
             // 
             // agentPage
             // 
+            this.agentPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.agentPage.Controls.Add(this.checkBoxUseConfig);
             this.agentPage.Controls.Add(this.selectedAgentLabel);
             this.agentPage.Controls.Add(this.selectYoruButton);
@@ -439,7 +441,9 @@ namespace Autolocker
             // 
             // configPage
             // 
-            this.configPage.Controls.Add(this.buttonBackgroundImage);
+            this.configPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.configPage.Controls.Add(this.buttonRemoveBackgroundImage);
+            this.configPage.Controls.Add(this.buttonSetBackgroundImage);
             this.configPage.Controls.Add(this.havenConfigLabel);
             this.configPage.Controls.Add(this.havenConfigDropdown);
             this.configPage.Controls.Add(this.splitConfigLabel);
@@ -466,15 +470,15 @@ namespace Autolocker
             this.configPage.Text = "Config";
             this.configPage.UseVisualStyleBackColor = true;
             // 
-            // buttonBackgroundImage
+            // buttonSetBackgroundImage
             // 
-            this.buttonBackgroundImage.Location = new System.Drawing.Point(478, 271);
-            this.buttonBackgroundImage.Name = "buttonBackgroundImage";
-            this.buttonBackgroundImage.Size = new System.Drawing.Size(160, 31);
-            this.buttonBackgroundImage.TabIndex = 18;
-            this.buttonBackgroundImage.Text = "choose background";
-            this.buttonBackgroundImage.UseVisualStyleBackColor = true;
-            this.buttonBackgroundImage.Click += new System.EventHandler(this.ButtonBackgroundImage_Click);
+            this.buttonSetBackgroundImage.Location = new System.Drawing.Point(478, 271);
+            this.buttonSetBackgroundImage.Name = "buttonSetBackgroundImage";
+            this.buttonSetBackgroundImage.Size = new System.Drawing.Size(160, 31);
+            this.buttonSetBackgroundImage.TabIndex = 18;
+            this.buttonSetBackgroundImage.Text = "choose background";
+            this.buttonSetBackgroundImage.UseVisualStyleBackColor = true;
+            this.buttonSetBackgroundImage.Click += new System.EventHandler(this.ButtonBackgroundImage_Click);
             // 
             // havenConfigLabel
             // 
@@ -858,6 +862,16 @@ namespace Autolocker
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // buttonRemoveBackgroundImage
+            // 
+            this.buttonRemoveBackgroundImage.Location = new System.Drawing.Point(662, 271);
+            this.buttonRemoveBackgroundImage.Name = "buttonRemoveBackgroundImage";
+            this.buttonRemoveBackgroundImage.Size = new System.Drawing.Size(160, 31);
+            this.buttonRemoveBackgroundImage.TabIndex = 19;
+            this.buttonRemoveBackgroundImage.Text = "remove background";
+            this.buttonRemoveBackgroundImage.UseVisualStyleBackColor = true;
+            this.buttonRemoveBackgroundImage.Click += new System.EventHandler(this.ButtonRemoveBackgroundImage_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -928,7 +942,8 @@ namespace Autolocker
         private Label bindConfigLabel;
         private ComboBox bindConfigDropdown;
         private OpenFileDialog openFileDialog1;
-        private Button buttonBackgroundImage;
+        private Button buttonSetBackgroundImage;
+        private Button buttonRemoveBackgroundImage;
     }
 }
 
