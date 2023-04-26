@@ -927,8 +927,9 @@ namespace Autolocker
                 if  (File.Exists(targetPath))
                 {
                     string tmpPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "tmp.jpg");
+                    if (File.Exists(tmpPath)) File.Delete(tmpPath);
                     File.Copy(openFileDialog.FileName, tmpPath, true);
-                    background.Dispose();
+                    if (background != null) background.Dispose();
                     background = Image.FromFile(tmpPath);
                     agentPage.BackgroundImage = background;
                     configPage.BackgroundImage = background;
@@ -962,9 +963,6 @@ namespace Autolocker
                 agentPage.BackgroundImage = null;
                 configPage.BackgroundImage = null;
                 Settings.Default.backgroundImagePath = "";
-
-                string targetPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "CustomBackgroundImage.jpg");
-                File.Delete(targetPath);
             }
         }
     }
