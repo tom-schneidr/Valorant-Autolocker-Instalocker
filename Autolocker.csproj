@@ -50,6 +50,9 @@
   <PropertyGroup>
     <ApplicationIcon>autolocker-valorant-64.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />

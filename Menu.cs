@@ -962,6 +962,9 @@ namespace Autolocker
                 agentPage.BackgroundImage = null;
                 configPage.BackgroundImage = null;
                 Settings.Default.backgroundImagePath = "";
+
+                string targetPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "CustomBackgroundImage.jpg");
+                File.Delete(targetPath);
             }
         }
     }
