@@ -3,7 +3,7 @@
 - It doesnt matter where the agents icon is located on your agent select screen, it automatically detects the correct position.
 
 # How to dowload
-- Current version: https://github.com/tom-schneidr/Valorant-Autolocker/releases/tag/V6.0
+- Current version: https://github.com/tom-schneidr/Valorant-Autolocker/releases/tag/v8.0.1
 - Simply download the .exe file. All you need to do is run it
 
 # How it works
