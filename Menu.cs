@@ -929,7 +929,7 @@ namespace Autolocker
                     string tmpPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "tmp.jpg");
                     if (File.Exists(tmpPath)) File.Delete(tmpPath);
                     File.Copy(openFileDialog.FileName, tmpPath, true);
-                    if (background != null) background.Dispose();
+                    background?.Dispose();
                     background = Image.FromFile(tmpPath);
                     agentPage.BackgroundImage = background;
                     configPage.BackgroundImage = background;
