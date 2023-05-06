@@ -946,12 +946,12 @@ namespace Autolocker
                 else
                 {
                     File.Copy(openFileDialog.FileName, targetPath, true);
-                    Settings.Default.backgroundImagePath = targetPath;
-                    Settings.Default.Save();
                     background = Image.FromFile(targetPath);
                     agentPage.BackgroundImage = background;
                     configPage.BackgroundImage = background;
                 }
+                Settings.Default.backgroundImagePath = targetPath;
+                Settings.Default.Save();
             }
         }
 
