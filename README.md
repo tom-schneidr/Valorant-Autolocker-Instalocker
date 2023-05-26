@@ -4,7 +4,7 @@
 
 # How to dowload
 - Current version: https://github.com/tom-schneidr/Valorant-Autolocker/releases/tag/v8.0.1
-- Simply download the .exe file. All you need to do is run it
+- Simply download the .exe file and run it.
 
 # How it works
 - Checks if and where the icon of the agent you want to select is on your screen, then clicks those coordinates and locks the agent instantly.<br>
