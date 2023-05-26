@@ -125,13 +125,20 @@ namespace Autolocker
                 int YOffset = 104;
                 double MAPPIXELS = 80 * 11;
 
-                // Loads current screen into bitmap
-                bounds = Screen.PrimaryScreen.Bounds;
-                fullscreen = new Bitmap(bounds.Width, bounds.Height);
+
+                fullscreen = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
 
                 using (graphics = Graphics.FromImage(fullscreen))
                 {
-                    graphics.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
+                    // Copy the screen contents to the fullscreen Bitmap
+                    graphics.CopyFromScreen(
+                        Screen.PrimaryScreen.Bounds.X,
+                        Screen.PrimaryScreen.Bounds.Y,
+                        0,
+                        0,
+                        Screen.PrimaryScreen.Bounds.Size,
+                        CopyPixelOperation.SourceCopy
+                    );
                 }
 
                 // Check maps
