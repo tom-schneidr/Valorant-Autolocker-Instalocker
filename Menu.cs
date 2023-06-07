@@ -497,6 +497,10 @@ namespace Autolocker
             if (checkBoxRandomAgent.Checked)
             {
                 checkBoxRandomAgent.Invoke((Action)(() => SelectRandomAgent()));
+            } else
+            {
+                agentName = "Jett";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
             }
         }
 
