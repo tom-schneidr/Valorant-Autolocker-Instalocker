@@ -109,7 +109,6 @@ namespace Autolocker
             double REQUIRED_ACCURACY = 0.8;
 
             // Variables for the images
-            Rectangle bounds;
             Bitmap fullscreen;
             Graphics graphics;
 
