@@ -18,3 +18,6 @@
 - Select your agent in the app or activate the random agent feature
 - Check active checkbox
 - Start searching for a match in Valorant
+
+
+![image](https://github.com/tom-schneidr/Valorant-Autolocker/assets/111613326/116d2059-bfba-4f0d-92dd-de8237c6320f)
