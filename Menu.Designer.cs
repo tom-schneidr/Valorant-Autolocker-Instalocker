@@ -28,6 +28,7 @@ namespace Autolocker
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.agentPage = new System.Windows.Forms.TabPage();
+            this.selectDeadlockButton = new System.Windows.Forms.Button();
             this.checkBoxUseConfig = new System.Windows.Forms.CheckBox();
             this.selectedAgentLabel = new System.Windows.Forms.Label();
             this.selectYoruButton = new System.Windows.Forms.Button();
@@ -56,6 +57,7 @@ namespace Autolocker
             this.checkBoxActive = new System.Windows.Forms.CheckBox();
             this.checkBoxRandomAgent = new System.Windows.Forms.CheckBox();
             this.configPage = new System.Windows.Forms.TabPage();
+            this.buttonRemoveBackgroundImage = new System.Windows.Forms.Button();
             this.buttonSetBackgroundImage = new System.Windows.Forms.Button();
             this.havenConfigLabel = new System.Windows.Forms.Label();
             this.havenConfigDropdown = new System.Windows.Forms.ComboBox();
@@ -76,7 +78,6 @@ namespace Autolocker
             this.ascentConfigLabel = new System.Windows.Forms.Label();
             this.ascentConfigDropdown = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.buttonRemoveBackgroundImage = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.agentPage.SuspendLayout();
             this.configPage.SuspendLayout();
@@ -97,6 +98,7 @@ namespace Autolocker
             // agentPage
             // 
             this.agentPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.agentPage.Controls.Add(this.selectDeadlockButton);
             this.agentPage.Controls.Add(this.checkBoxUseConfig);
             this.agentPage.Controls.Add(this.selectedAgentLabel);
             this.agentPage.Controls.Add(this.selectYoruButton);
@@ -132,6 +134,17 @@ namespace Autolocker
             this.agentPage.Text = "Agent Select";
             this.agentPage.UseVisualStyleBackColor = true;
             // 
+            // selectDeadlockButton
+            // 
+            this.selectDeadlockButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.selectDeadlockButton.Image = global::Autolocker.Properties.Resources.deadlock;
+            this.selectDeadlockButton.Location = new System.Drawing.Point(489, 62);
+            this.selectDeadlockButton.Name = "selectDeadlockButton";
+            this.selectDeadlockButton.Size = new System.Drawing.Size(85, 85);
+            this.selectDeadlockButton.TabIndex = 53;
+            this.selectDeadlockButton.UseVisualStyleBackColor = true;
+            this.selectDeadlockButton.Click += new System.EventHandler(this.SelectDeadlockButton_Click);
+            // 
             // checkBoxUseConfig
             // 
             this.checkBoxUseConfig.AutoSize = true;
@@ -159,7 +172,7 @@ namespace Autolocker
             // 
             this.selectYoruButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectYoruButton.Image = global::Autolocker.Properties.Resources.yoru;
-            this.selectYoruButton.Location = new System.Drawing.Point(853, 153);
+            this.selectYoruButton.Location = new System.Drawing.Point(944, 153);
             this.selectYoruButton.Name = "selectYoruButton";
             this.selectYoruButton.Size = new System.Drawing.Size(85, 85);
             this.selectYoruButton.TabIndex = 50;
@@ -170,7 +183,7 @@ namespace Autolocker
             // 
             this.selectSkyeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectSkyeButton.Image = global::Autolocker.Properties.Resources.skye;
-            this.selectSkyeButton.Location = new System.Drawing.Point(580, 153);
+            this.selectSkyeButton.Location = new System.Drawing.Point(671, 153);
             this.selectSkyeButton.Name = "selectSkyeButton";
             this.selectSkyeButton.Size = new System.Drawing.Size(85, 85);
             this.selectSkyeButton.TabIndex = 47;
@@ -181,7 +194,7 @@ namespace Autolocker
             // 
             this.selectSovaButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectSovaButton.Image = global::Autolocker.Properties.Resources.sova;
-            this.selectSovaButton.Location = new System.Drawing.Point(671, 153);
+            this.selectSovaButton.Location = new System.Drawing.Point(762, 153);
             this.selectSovaButton.Name = "selectSovaButton";
             this.selectSovaButton.Size = new System.Drawing.Size(85, 85);
             this.selectSovaButton.TabIndex = 48;
@@ -192,7 +205,7 @@ namespace Autolocker
             // 
             this.selectViperButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectViperButton.Image = global::Autolocker.Properties.Resources.viper;
-            this.selectViperButton.Location = new System.Drawing.Point(762, 153);
+            this.selectViperButton.Location = new System.Drawing.Point(853, 153);
             this.selectViperButton.Name = "selectViperButton";
             this.selectViperButton.Size = new System.Drawing.Size(85, 85);
             this.selectViperButton.TabIndex = 49;
@@ -203,7 +216,7 @@ namespace Autolocker
             // 
             this.selectPhoenixButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectPhoenixButton.Image = global::Autolocker.Properties.Resources.phoenix;
-            this.selectPhoenixButton.Location = new System.Drawing.Point(214, 153);
+            this.selectPhoenixButton.Location = new System.Drawing.Point(305, 153);
             this.selectPhoenixButton.Name = "selectPhoenixButton";
             this.selectPhoenixButton.Size = new System.Drawing.Size(85, 85);
             this.selectPhoenixButton.TabIndex = 43;
@@ -214,7 +227,7 @@ namespace Autolocker
             // 
             this.selectRazeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectRazeButton.Image = global::Autolocker.Properties.Resources.raze;
-            this.selectRazeButton.Location = new System.Drawing.Point(305, 153);
+            this.selectRazeButton.Location = new System.Drawing.Point(398, 153);
             this.selectRazeButton.Name = "selectRazeButton";
             this.selectRazeButton.Size = new System.Drawing.Size(85, 85);
             this.selectRazeButton.TabIndex = 44;
@@ -225,7 +238,7 @@ namespace Autolocker
             // 
             this.selectReynaButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectReynaButton.Image = global::Autolocker.Properties.Resources.reyna;
-            this.selectReynaButton.Location = new System.Drawing.Point(396, 153);
+            this.selectReynaButton.Location = new System.Drawing.Point(489, 153);
             this.selectReynaButton.Name = "selectReynaButton";
             this.selectReynaButton.Size = new System.Drawing.Size(85, 85);
             this.selectReynaButton.TabIndex = 45;
@@ -236,7 +249,7 @@ namespace Autolocker
             // 
             this.selectSageButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectSageButton.Image = global::Autolocker.Properties.Resources.sage;
-            this.selectSageButton.Location = new System.Drawing.Point(487, 153);
+            this.selectSageButton.Location = new System.Drawing.Point(580, 153);
             this.selectSageButton.Name = "selectSageButton";
             this.selectSageButton.Size = new System.Drawing.Size(85, 85);
             this.selectSageButton.TabIndex = 46;
@@ -247,7 +260,7 @@ namespace Autolocker
             // 
             this.selectJettButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectJettButton.Image = global::Autolocker.Properties.Resources.jett;
-            this.selectJettButton.Location = new System.Drawing.Point(762, 62);
+            this.selectJettButton.Location = new System.Drawing.Point(853, 62);
             this.selectJettButton.Name = "selectJettButton";
             this.selectJettButton.Size = new System.Drawing.Size(85, 85);
             this.selectJettButton.TabIndex = 38;
@@ -258,7 +271,7 @@ namespace Autolocker
             // 
             this.selectKayoButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectKayoButton.Image = global::Autolocker.Properties.Resources.kayo;
-            this.selectKayoButton.Location = new System.Drawing.Point(853, 62);
+            this.selectKayoButton.Location = new System.Drawing.Point(944, 62);
             this.selectKayoButton.Name = "selectKayoButton";
             this.selectKayoButton.Size = new System.Drawing.Size(85, 85);
             this.selectKayoButton.TabIndex = 39;
@@ -269,7 +282,7 @@ namespace Autolocker
             // 
             this.selectKilljoyButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectKilljoyButton.Image = global::Autolocker.Properties.Resources.killjoy;
-            this.selectKilljoyButton.Location = new System.Drawing.Point(944, 62);
+            this.selectKilljoyButton.Location = new System.Drawing.Point(32, 153);
             this.selectKilljoyButton.Name = "selectKilljoyButton";
             this.selectKilljoyButton.Size = new System.Drawing.Size(85, 85);
             this.selectKilljoyButton.TabIndex = 40;
@@ -280,7 +293,7 @@ namespace Autolocker
             // 
             this.selectNeonButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectNeonButton.Image = global::Autolocker.Properties.Resources.neon;
-            this.selectNeonButton.Location = new System.Drawing.Point(32, 153);
+            this.selectNeonButton.Location = new System.Drawing.Point(123, 153);
             this.selectNeonButton.Name = "selectNeonButton";
             this.selectNeonButton.Size = new System.Drawing.Size(85, 85);
             this.selectNeonButton.TabIndex = 41;
@@ -291,7 +304,7 @@ namespace Autolocker
             // 
             this.selectOmenButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectOmenButton.Image = global::Autolocker.Properties.Resources.omen;
-            this.selectOmenButton.Location = new System.Drawing.Point(123, 153);
+            this.selectOmenButton.Location = new System.Drawing.Point(214, 153);
             this.selectOmenButton.Name = "selectOmenButton";
             this.selectOmenButton.Size = new System.Drawing.Size(85, 85);
             this.selectOmenButton.TabIndex = 42;
@@ -303,7 +316,7 @@ namespace Autolocker
             this.selectFadeButton.BackColor = System.Drawing.SystemColors.Control;
             this.selectFadeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectFadeButton.Image = global::Autolocker.Properties.Resources.fade;
-            this.selectFadeButton.Location = new System.Drawing.Point(487, 62);
+            this.selectFadeButton.Location = new System.Drawing.Point(580, 62);
             this.selectFadeButton.Name = "selectFadeButton";
             this.selectFadeButton.Size = new System.Drawing.Size(85, 85);
             this.selectFadeButton.TabIndex = 35;
@@ -314,7 +327,7 @@ namespace Autolocker
             // 
             this.selectGekkoButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectGekkoButton.Image = global::Autolocker.Properties.Resources.gekko;
-            this.selectGekkoButton.Location = new System.Drawing.Point(580, 62);
+            this.selectGekkoButton.Location = new System.Drawing.Point(671, 62);
             this.selectGekkoButton.Name = "selectGekkoButton";
             this.selectGekkoButton.Size = new System.Drawing.Size(85, 85);
             this.selectGekkoButton.TabIndex = 36;
@@ -325,7 +338,7 @@ namespace Autolocker
             // 
             this.selectHarborButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectHarborButton.Image = global::Autolocker.Properties.Resources.harbor;
-            this.selectHarborButton.Location = new System.Drawing.Point(671, 62);
+            this.selectHarborButton.Location = new System.Drawing.Point(762, 62);
             this.selectHarborButton.Name = "selectHarborButton";
             this.selectHarborButton.Size = new System.Drawing.Size(85, 85);
             this.selectHarborButton.TabIndex = 37;
@@ -470,6 +483,16 @@ namespace Autolocker
             this.configPage.Text = "Config";
             this.configPage.UseVisualStyleBackColor = true;
             // 
+            // buttonRemoveBackgroundImage
+            // 
+            this.buttonRemoveBackgroundImage.Location = new System.Drawing.Point(662, 271);
+            this.buttonRemoveBackgroundImage.Name = "buttonRemoveBackgroundImage";
+            this.buttonRemoveBackgroundImage.Size = new System.Drawing.Size(160, 31);
+            this.buttonRemoveBackgroundImage.TabIndex = 19;
+            this.buttonRemoveBackgroundImage.Text = "remove background";
+            this.buttonRemoveBackgroundImage.UseVisualStyleBackColor = true;
+            this.buttonRemoveBackgroundImage.Click += new System.EventHandler(this.ButtonRemoveBackgroundImage_Click);
+            // 
             // buttonSetBackgroundImage
             // 
             this.buttonSetBackgroundImage.Location = new System.Drawing.Point(478, 271);
@@ -501,6 +524,7 @@ namespace Autolocker
             "Brimstone",
             "Chamber",
             "Cypher",
+            "Deadlock",
             "Fade",
             "Gekko",
             "Harbor",
@@ -543,6 +567,7 @@ namespace Autolocker
             "Brimstone",
             "Chamber",
             "Cypher",
+            "Deadlock",
             "Fade",
             "Gekko",
             "Harbor",
@@ -585,6 +610,7 @@ namespace Autolocker
             "Brimstone",
             "Chamber",
             "Cypher",
+            "Deadlock",
             "Fade",
             "Gekko",
             "Harbor",
@@ -627,6 +653,7 @@ namespace Autolocker
             "Brimstone",
             "Chamber",
             "Cypher",
+            "Deadlock",
             "Fade",
             "Gekko",
             "Harbor",
@@ -669,6 +696,7 @@ namespace Autolocker
             "Brimstone",
             "Chamber",
             "Cypher",
+            "Deadlock",
             "Fade",
             "Gekko",
             "Harbor",
@@ -711,6 +739,7 @@ namespace Autolocker
             "Brimstone",
             "Chamber",
             "Cypher",
+            "Deadlock",
             "Fade",
             "Gekko",
             "Harbor",
@@ -753,6 +782,7 @@ namespace Autolocker
             "Brimstone",
             "Chamber",
             "Cypher",
+            "Deadlock",
             "Fade",
             "Gekko",
             "Harbor",
@@ -795,6 +825,7 @@ namespace Autolocker
             "Brimstone",
             "Chamber",
             "Cypher",
+            "Deadlock",
             "Fade",
             "Gekko",
             "Harbor",
@@ -837,6 +868,7 @@ namespace Autolocker
             "Brimstone",
             "Chamber",
             "Cypher",
+            "Deadlock",
             "Fade",
             "Gekko",
             "Harbor",
@@ -861,16 +893,6 @@ namespace Autolocker
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // buttonRemoveBackgroundImage
-            // 
-            this.buttonRemoveBackgroundImage.Location = new System.Drawing.Point(662, 271);
-            this.buttonRemoveBackgroundImage.Name = "buttonRemoveBackgroundImage";
-            this.buttonRemoveBackgroundImage.Size = new System.Drawing.Size(160, 31);
-            this.buttonRemoveBackgroundImage.TabIndex = 19;
-            this.buttonRemoveBackgroundImage.Text = "remove background";
-            this.buttonRemoveBackgroundImage.UseVisualStyleBackColor = true;
-            this.buttonRemoveBackgroundImage.Click += new System.EventHandler(this.ButtonRemoveBackgroundImage_Click);
             // 
             // Menu
             // 
@@ -944,6 +966,7 @@ namespace Autolocker
         private OpenFileDialog openFileDialog1;
         private Button buttonSetBackgroundImage;
         private Button buttonRemoveBackgroundImage;
+        private Button selectDeadlockButton;
     }
 }
 

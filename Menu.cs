@@ -31,7 +31,7 @@ namespace Autolocker
         }
 
         // Variables YAY
-        readonly string[] allAgents = { "Astra", "Breach", "Brimstone", "Chamber", "Cypher", "Fade", "Gekko", "Harbor", "Jett", "KAYO", "Killjoy", "Omen", "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru" };
+        readonly string[] allAgents = { "Astra", "Breach", "Brimstone", "Chamber", "Cypher", "Deadlock", "Fade", "Gekko", "Harbor", "Jett", "KAYO", "Killjoy", "Omen", "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru" };
         string agentName = "Jett";
         bool found = false;
         string randomBind = "F7";
@@ -702,6 +702,15 @@ namespace Autolocker
             if (!checkBoxRandomAgent.Checked)
             {
                 agentName = "Cypher";
+                selectedAgentLabel.Text = "Selected agent: " + agentName;
+            }
+        }
+
+        private void SelectDeadlockButton_Click(object sender, EventArgs e)
+        {
+            if (!checkBoxRandomAgent.Checked)
+            {
+                agentName = "Deadlock";
                 selectedAgentLabel.Text = "Selected agent: " + agentName;
             }
         }
