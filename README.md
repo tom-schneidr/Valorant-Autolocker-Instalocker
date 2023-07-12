@@ -1,11 +1,11 @@
-![image](https://github.com/tom-schneidr/Valorant-Autolocker/assets/111613326/116d2059-bfba-4f0d-92dd-de8237c6320f)
+![image](https://github.com/tom-schneidr/Valorant-Autolocker/assets/111613326/1b781ebd-7d5c-453a-8d4d-f6a03243d81f)
 
 # Valorant Autolocker
 - Instantly and automatically select the agent you want to play in Valorant.<br>
 - It doesnt matter where the agents icon is located on your agent select screen, it automatically detects the correct position.
 
 # How to dowload
-- Current version: [Compatible with VALORANT Version 6.11](https://github.com/tom-schneidr/Valorant-Autolocker/releases/tag/v8.0.3)
+- Current version: [Compatible with VALORANT Version 6.11](https://github.com/tom-schneidr/Valorant-Autolocker/releases/tag/v8.0.4)
 - Simply download the .exe file and run it.
 
 # How it works
