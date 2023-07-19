@@ -157,7 +157,7 @@ namespace Autolocker
                         if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
-                Console.WriteLine(matched / MAPPIXELS);
+
                 if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "ascent";
@@ -184,7 +184,7 @@ namespace Autolocker
                         if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
-                Console.WriteLine(matched / MAPPIXELS);
+
                 if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "bind";
@@ -211,7 +211,7 @@ namespace Autolocker
                         if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
-                Console.WriteLine(matched / MAPPIXELS);
+
                 if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "breeze";
@@ -238,7 +238,7 @@ namespace Autolocker
                         if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
-                Console.WriteLine(matched / MAPPIXELS);
+
                 if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "fracture";
@@ -265,7 +265,7 @@ namespace Autolocker
                         if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
-                Console.WriteLine(matched / MAPPIXELS);
+
                 if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "haven";
@@ -292,7 +292,7 @@ namespace Autolocker
                         if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
-                Console.WriteLine(matched / MAPPIXELS);
+
                 if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "icebox";
@@ -319,7 +319,7 @@ namespace Autolocker
                         if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
-                Console.WriteLine(matched / MAPPIXELS);
+
                 if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "lotus";
@@ -346,7 +346,7 @@ namespace Autolocker
                         if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
-                Console.WriteLine(matched / MAPPIXELS);
+
                 if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "pearl";
@@ -373,7 +373,7 @@ namespace Autolocker
                         if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
                     }
                 }
-                Console.WriteLine(matched / MAPPIXELS);
+
                 if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
                 {
                     map = "split";
@@ -402,7 +402,6 @@ namespace Autolocker
                     {
                         Thread.Sleep(10);
                     }
-                    Console.WriteLine(map);
                     if (map == "ascent") ascentConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
                     else if (map == "bind") bindConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
                     else if (map == "breeze") breezeConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
