@@ -390,7 +390,7 @@ namespace Autolocker
         public void SearchAgent(int row)
         {
             int RGB_TOLERANCE = 10;
-            double REQUIRED_ACCURACY = 0.8;
+            double REQUIRED_ACCURACY = 0.6;
             double AGENTPIXELS = 80 * 80;
             // Keeps searching until the program is turned off (active checkmark removed)
             while (checkBoxActive.Checked && !found)
