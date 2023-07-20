@@ -5,7 +5,7 @@
 - It doesnt matter where the agents icon is located on your agent select screen, it automatically detects the correct position.
 
 # How to dowload
-- Current version: [Compatible with VALORANT Version 7.01](https://github.com/tom-schneidr/Valorant-Autolocker/releases/tag/v8.0.4)
+- Current version: [Compatible with VALORANT Version 7.01](https://github.com/tom-schneidr/Valorant-Autolocker/releases/tag/v8.0.5)
 - Simply download the .exe file and run it.
 
 # How it works
