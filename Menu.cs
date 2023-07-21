@@ -44,7 +44,7 @@ namespace Autolocker
             while (true)
             {
                 // Minimum CPU usage
-                Thread.Sleep(50);
+                Thread.Sleep(100);
                 // Loop through all possible F keys
                 for (int i = 112; i < 124; i++)
                 {
