@@ -2,9 +2,14 @@
 using System;
 using System.Drawing;
 using System.IO;
+using System.Net.Mail;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using System.Diagnostics;
+using Microsoft.Win32;
 
 namespace Autolocker
 {
@@ -45,24 +50,22 @@ namespace Autolocker
             {
                 // Minimum CPU usage
                 Thread.Sleep(100);
-                // Loop through all possible F keys
-                for (int i = 112; i < 124; i++)
+                // Loop through all possible keys
+                for (int i = 0; i < 127; i++)
                 {
                     int keyState = GetAsyncKeyState(i);
 
                     if (keyState != 0)
                     {
-                        if(Enum.GetName(typeof(Keys), i) == randomBind)
+                        if (Enum.GetName(typeof(Keys), i) == randomBind)
                         {
                             if (checkBoxRandomAgent.Checked) checkBoxRandomAgent.Invoke(new UncheckRandomDelegate(UncheckRandom));
                             else if (!checkBoxRandomAgent.Checked) checkBoxRandomAgent.Invoke(new CheckRandomDelegate(CheckRandom));
-                            Thread.Sleep(200);
                         }
                         if (Enum.GetName(typeof(Keys), i) == activeBind)
                         {
                             if (checkBoxActive.Checked) checkBoxActive.Invoke(new UncheckActiveDelegate(UncheckActive));
                             else if (!checkBoxActive.Checked) checkBoxActive.Invoke(new CheckActiveDelegate(CheckActive));
-                            Thread.Sleep(200);
                         }
                     }
                 }
@@ -379,7 +382,7 @@ namespace Autolocker
                     map = "split";
                     m.Dispose();
                     bitMap.Dispose();
-                    fullscreen.Dispose(); 
+                    fullscreen.Dispose();
                     break;
                 }
                 m.Dispose();
@@ -496,7 +499,8 @@ namespace Autolocker
             if (checkBoxRandomAgent.Checked)
             {
                 checkBoxRandomAgent.Invoke((Action)(() => SelectRandomAgent()));
-            } else
+            }
+            else
             {
                 agentName = "Jett";
                 selectedAgentLabel.Text = "Selected agent: " + agentName;
@@ -545,7 +549,7 @@ namespace Autolocker
             else if (map == "bind")
             {
                 if (bindConfigDropdown.SelectedItem == null) return;
-                    agentName = bindConfigDropdown.SelectedItem.ToString();
+                agentName = bindConfigDropdown.SelectedItem.ToString();
             }
             else if (map == "breeze")
             {
@@ -598,7 +602,7 @@ namespace Autolocker
             randomKeybindButton.Text = "[...]";
             Thread setRandomButtonTextThread = new Thread(new ThreadStart(SetRandomKeybindText))
             {
-                IsBackground=true
+                IsBackground = true
             };
             setRandomButtonTextThread.Start();
         }
@@ -609,8 +613,8 @@ namespace Autolocker
             while (!pressed)
             {
                 // Minimum CPU usage
-                Thread.Sleep(50);
-                for (int i = 112; i < 124; i++)
+                Thread.Sleep(100);
+                for (int i = 0; i < 127; i++)
                 {
                     int keyState = GetAsyncKeyState(i);
                     if (keyState != 0)
@@ -639,9 +643,9 @@ namespace Autolocker
             while (!pressed)
             {
                 // Minimum CPU usage
-                Thread.Sleep(50);
+                Thread.Sleep(100);
                 // Loop through all possible F keys
-                for (int i = 112; i < 124; i++)
+                for (int i = 0; i < 127; i++)
                 {
                     int keyState = GetAsyncKeyState(i);
                     if (keyState != 0)
@@ -909,7 +913,7 @@ namespace Autolocker
                 background = Image.FromFile(Settings.Default.backgroundImagePath);
                 agentPage.BackgroundImage = background;
                 configPage.BackgroundImage = background;
-            } 
+            }
         }
 
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)
@@ -942,7 +946,7 @@ namespace Autolocker
             {
                 string targetPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "CustomBackgroundImage.jpg");
 
-                if  (File.Exists(targetPath))
+                if (File.Exists(targetPath))
                 {
                     string tmpPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "tmp.jpg");
                     if (File.Exists(tmpPath)) File.Delete(tmpPath);
