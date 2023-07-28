@@ -55,6 +55,7 @@ namespace Autolocker
                 {
                     int keyState = GetAsyncKeyState(i);
 
+                    // Check if a set keybind is being pressed, trigger event if detected
                     if (keyState != 0)
                     {
                         if (Enum.GetName(typeof(Keys), i) == randomBind)
@@ -109,7 +110,7 @@ namespace Autolocker
         {
             map = null;
             int RGB_TOLERANCE = 10;
-            double REQUIRED_ACCURACY = 0.8;
+            double REQUIRED_ACCURACY = 0.7;
 
             // Variables for the images
             Bitmap fullscreen;
