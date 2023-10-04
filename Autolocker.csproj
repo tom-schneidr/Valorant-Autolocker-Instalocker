@@ -208,6 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="autolocker-valorant-64.ico" />
+    <None Include="imgs\sunset.png" />
     <None Include="imgs\deadlock.png" />
     <None Include="imgs\sebiBackground.jpg" />
     <None Include="imgs\split.png" />

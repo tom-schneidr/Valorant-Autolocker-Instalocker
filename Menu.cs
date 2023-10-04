@@ -2,14 +2,9 @@
 using System;
 using System.Drawing;
 using System.IO;
-using System.Net.Mail;
-using System.Net;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using System.Diagnostics;
-using Microsoft.Win32;
 
 namespace Autolocker
 {
@@ -38,7 +33,6 @@ namespace Autolocker
         // Variables YAY
         readonly string[] allAgents = { "Astra", "Breach", "Brimstone", "Chamber", "Cypher", "Deadlock", "Fade", "Gekko", "Harbor", "Jett", "KAYO", "Killjoy", "Omen", "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Viper", "Yoru" };
         string agentName = "Jett";
-        bool found = false;
         string randomBind = "F7";
         string activeBind = "F8";
         string map = null;
@@ -386,6 +380,34 @@ namespace Autolocker
                     fullscreen.Dispose();
                     break;
                 }
+
+                m = Resources.sunset;
+                bitMap = new Bitmap(m);
+
+                matched = 0;
+                for (int x = 0; x < 80; x++)
+                {
+                  for (int y = 0; y < 11; y++)
+                  {
+                    Color mapPixel = bitMap.GetPixel(x, y);
+                    Color fullPixel = fullscreen.GetPixel(x + XOffset, y + YOffset);
+                    int r = mapPixel.R - fullPixel.R;
+                    int g = mapPixel.G - fullPixel.G;
+                    int b = mapPixel.B - fullPixel.B;
+
+                    if ((r * r + g * g + b * b) / 3 <= RGB_TOLERANCE * RGB_TOLERANCE) matched++;
+                  }
+                }
+
+                if (matched / MAPPIXELS >= REQUIRED_ACCURACY)
+                {
+                  map = "sunset";
+                  m.Dispose();
+                  bitMap.Dispose();
+                  fullscreen.Dispose();
+                  break;
+                }
+
                 m.Dispose();
                 bitMap.Dispose();
                 fullscreen.Dispose();
@@ -397,7 +419,7 @@ namespace Autolocker
             double REQUIRED_ACCURACY = 0.6;
             double AGENTPIXELS = 80 * 80;
             // Keeps searching until the program is turned off (active checkmark removed)
-            while (checkBoxActive.Checked && !found)
+            while (checkBoxActive.Checked)
             {
                 Thread.Sleep(50);
                 if (checkBoxUseConfig.Checked)
@@ -415,6 +437,8 @@ namespace Autolocker
                     else if (map == "lotus") lotusConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
                     else if (map == "pearl") pearlConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
                     else if (map == "split") splitConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    else if (map == "sunset") splitConfigDropdown.Invoke((Action)(() => SetConfigAgent(map)));
+                    map = null;
                 }
                 agentName = agentName.ToLower();
                 // Loads currently selected agent icon into bitmap
@@ -460,9 +484,6 @@ namespace Autolocker
 
                     if ((matched / AGENTPIXELS) >= REQUIRED_ACCURACY)
                     {
-                        found = true;
-                        this.checkBoxActive.Invoke(new UncheckActiveDelegate(UncheckActive));
-
                         // Selection repeated for 5 seconds to make sure an agent is selected
                         TimeSpan endtime = DateTime.Now.AddSeconds(5).TimeOfDay;
                         while (DateTime.Now.TimeOfDay <= endtime)
@@ -526,7 +547,6 @@ namespace Autolocker
                     checkBoxRandomAgent.Invoke((Action)(() => SelectRandomAgent()));
                 }
 
-                found = false;
                 Thread searchThreadTop = new Thread(() => SearchAgent(0))
                 {
                     IsBackground = true
@@ -587,6 +607,11 @@ namespace Autolocker
             {
                 if (splitConfigDropdown.SelectedItem == null) return;
                 agentName = splitConfigDropdown.SelectedItem.ToString();
+            }
+            else if (map == "sunset")
+            {
+              if (sunsetConfigDropdown.SelectedItem == null) return;
+              agentName = sunsetConfigDropdown.SelectedItem.ToString();
             }
 
             selectedAgentLabel.Text = "Selected agent: " + agentName;
@@ -988,5 +1013,5 @@ namespace Autolocker
                 Settings.Default.backgroundImagePath = "";
             }
         }
-    }
+  }
 }
